@@ -72,7 +72,7 @@ public class ContratoDAO implements IContrato {
                 List<Object> primeraFila = datosContrato.get(0);
 
                 // Acceder a cada valor individualmente e imprimirlo
-                String kContrato = (String) primeraFila.get(0);
+                int kContrato = (int) primeraFila.get(0);
                 String fInicio = (String) primeraFila.get(1);
                 String fFinalizacion = (String) primeraFila.get(2);
                 int vCanonPactado = (int) primeraFila.get(3);
@@ -80,7 +80,7 @@ public class ContratoDAO implements IContrato {
 
                 PagoDAO pago = new PagoDAO();
 
-                return pago.registrarPlandePagos(fInicio, fFinalizacion, vCanonPactado, vPeriodoFacturacion);
+                return pago.registrarPlandePagos(kContrato, fInicio, fFinalizacion, vCanonPactado, vPeriodoFacturacion);
 
             } else {
                 System.out.println("No se encontraron datos para el contrato con ID: " + idContrato);

@@ -29,9 +29,34 @@ public class ContratoDAO implements IContrato {
     }
 
     public Contrato consultarContrato(String cedula) {
-        return null;
+        Contrato contrato = null;
+        String sql = "SELECT * FROM contratos WHERE k_arrendatario = ?";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, cedula);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                contrato = new Contrato();
+                contrato.setIdContrato(rs.getInt("k_contrato"));
+                contrato.setFechaCreacion(rs.getString("f_creacion"));
+                contrato.setFechaFirma(rs.getString("f_firma"));
+                contrato.setFechaInicio(rs.getString("f_inicio"));
+                contrato.setFechaFinalizacion(rs.getString("f_finalizacion"));
+                contrato.setCedulaArrendador(rs.getString("k_arrendador"));
+                contrato.setCedulaArrendatario(rs.getString("k_arrendatario"));
+                contrato.setCodigoInmueble(rs.getInt("k_propiedad"));
+                contrato.setCanonPactado(rs.getInt("v_canonpactado"));
+                contrato.setPeriodoFacturacion(rs.getInt("v_periodofacturacion"));
+                contrato.setTerminosycondicionesContrato(rs.getString("o_terminosycondiciones"));
+                contrato.setFirmaArrendador(rs.getString("i_firmaarrendador"));
+                contrato.setFirmaArrendatario(rs.getString("i_firmaarrendatario"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e);
+        }
+        return contrato;
     }
-
     public ArrayList<List<Object>> consultarPeriodoFacturacion(int idContrato){
 
         ArrayList<List<Object>> list = new ArrayList<>();

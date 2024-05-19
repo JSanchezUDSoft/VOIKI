@@ -5,6 +5,7 @@ import Interfaces.IPropiedad;
 import Modelo.Propiedad;
 
 import java.sql.*;
+import java.util.*;
 
 public class PropiedadDAO implements IPropiedad {
 
@@ -26,8 +27,34 @@ public class PropiedadDAO implements IPropiedad {
         }
     }
 
-    public Propiedad consultarInmueblesDisponibles() {
-        return null;
+    public List<Propiedad> consultarInmueblesDisponibles() {
+        List<Propiedad> lista = new ArrayList<>();
+        String sql = "SELECT * FROM propiedades WHERE i_disponibilidad = 'D'"; // 'D' para disponibles, ajustar según tu lógica
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Propiedad propiedad = new Propiedad();
+                propiedad.setIdPropiedad(rs.getInt("k_propiedad"));
+                propiedad.setCedulaCatastral(rs.getString("k_cedulacatastral"));
+                propiedad.setMatriculaInmobiliaria(rs.getString("k_matriculainmobiliaria"));
+                propiedad.setDireccion(rs.getString("d_propiedad"));
+                propiedad.setCiudad(rs.getString("n_ciudad"));
+                propiedad.setBarrio(rs.getString("n_barrio"));
+                propiedad.setEstrato(rs.getInt("o_estrato"));
+                propiedad.setArea(rs.getInt("v_area"));
+                propiedad.setHabitaciones(rs.getInt("v_habitaciones"));
+                propiedad.setBanos(rs.getInt("v_banos"));
+                propiedad.setDescripcion(rs.getString("o_descripcion"));
+                propiedad.setCanonArrrendamiento(rs.getInt("v_canonarrendamiento"));
+                propiedad.setDisponibilidad(rs.getString("i_disponibilidad").charAt(0));
+                lista.add(propiedad);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e);
+        }
+        return lista;
     }
 
     public boolean actualizarInformacionInmueble(Propiedad propiedad) {

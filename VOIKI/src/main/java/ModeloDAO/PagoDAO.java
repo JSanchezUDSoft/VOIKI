@@ -6,6 +6,9 @@ import Modelo.Pago;
 
 import java.sql.*;
 import java.time.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class PagoDAO implements IPago {
 
@@ -39,28 +42,43 @@ public class PagoDAO implements IPago {
         }
     }
 
-    public Pago consultarPagos(char tipoConsulta, String valorConsulta) {
-    Pago pago = null;
-    String sql = "SELECT * FROM pagos WHERE k_contrato = ?";
+    public List<Pago> consultarPagos(char tipoConsulta, String valorConsulta) {
+        List<Pago> pagos = new ArrayList<>();
+        String sql = "";
 
-    try {
-        con = cn.getConnection();
-        ps = con.prepareStatement(sql);
-        ps.setString(1, valorConsulta);
-        rs = ps.executeQuery();
+        try {
+            con = cn.getConnection();
+            PreparedStatement ps;
 
-        if (rs.next()) {
-            pago = new Pago();
-            pago.setCuota(rs.getInt("cuota"));
-            pago.setFechaPago(rs.getDate("f_pago").toString());
-            pago.setEstadoPago(rs.getString("i_pago").charAt(0));
+            if (tipoConsulta == 'C') { // Consulta por cédula del arrendador
+                sql = "SELECT * FROM pagos WHERE k_contrato IN (SELECT k_contrato FROM contratos WHERE k_arrendador = ?)";
+                ps = con.prepareStatement(sql);
+                ps.setString(1, valorConsulta);
+            } else if (tipoConsulta == 'P') { // Consulta por propiedad
+                sql = "SELECT * FROM pagos WHERE k_contrato IN (SELECT k_contrato FROM contratos WHERE k_propiedad = ?)";
+                ps = con.prepareStatement(sql);
+                ps.setString(1, valorConsulta);
+            } else { // Consulta general de todos los pagos pendientes
+                sql = "SELECT * FROM pagos WHERE i_pago = 'P'";
+                ps = con.prepareStatement(sql);
+            }
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Pago pago = new Pago();
+                pago.setCuota(rs.getInt("cuota"));
+                pago.setFechaPago(rs.getDate("f_pago").toString());
+                pago.setEstadoPago(rs.getString("i_pago").charAt(0));
+                pagos.add(pago);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e);
         }
-    } catch (SQLException e) {
-        System.out.println("Error: " + e);
+
+        return pagos;
     }
 
-    return pago;
-}
     public boolean cambiarEstadoPago(int idPago, String estado) {
         String sql = "UPDATE pagos SET I_PAGO = '"+estado+"' WHERE (K_PAGO = '"+idPago+"')";
 

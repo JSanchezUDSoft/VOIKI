@@ -29,4 +29,10 @@ public class UsuarioDAO implements IUsuario {
     public Usuario consultarArrendadorArrendatario(String cedula) {
         return null;
     }
+
+    public boolean eliminarUsuario(String cedula) {
+        return false;
+    }
+
+
 }

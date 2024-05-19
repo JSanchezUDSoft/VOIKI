@@ -2,7 +2,7 @@ package Modelo;
 
 import java.io.StringWriter;
 
-public class Contrato {
+public class    Contrato {
 
     private int     idContrato;
     private String  fechaCreacion;

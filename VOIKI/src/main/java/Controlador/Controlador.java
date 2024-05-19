@@ -15,9 +15,12 @@ public class Controlador extends HttpServlet {
     String add="Vistas/add.jsp";
     String edit="Vistas/edit.jsp";
 
-    String registrarUsuario = "Vistas/registrar_usuario.jsp";
+    String registrarUsuario = "Vistas/registrar_Usuario.jsp";
     String publicitarInmueble = "Vistas/publicitar_inmueble.jsp";
-    String crearContrato = "Vistas/crear_contrato.jsp";
+    String crearContrato = "Vistas/registrar_contrato.jsp";
+
+    String arrendatarioMain = "Vistas/arrendatario_main.jsp";
+    String arrendadorMain = "Vistas/arrendador_main.jsp";
 
     String consultarInmueble = "Vistas/consultar_inmueble.jsp";
     String consultarContrato = "Vistas/consultar_contrato.jsp";
@@ -135,16 +138,53 @@ public class Controlador extends HttpServlet {
             byte r = loginDAO.iniciarSesion(logIn);
 
             if(r==1){
-                acceso = crearContrato;
+                acceso = arrendadorMain;
             }
 
             else if(r==2){
-                acceso = consultarInmueble;
+                acceso = arrendatarioMain;
             }
 
             else{
                 acceso = login;
             }
+        }
+        else if (action.equalsIgnoreCase("Registrar")) {
+            acceso = registrarUsuario;
+        }
+        else if (action.equalsIgnoreCase("RegistrarU")) {
+            String cedula = (String )request.getParameter("identificacion");
+            String telefono = (String) request.getParameter("telefono");
+            String email = request.getParameter("email");
+            String contrasena = (String) request.getParameter("pass");
+            char rol = request.getParameter("rol").toCharArray()[0];
+            String nombre = request.getParameter("nombreUsuario");
+
+            Usuario newUser = new Usuario(cedula,nombre,telefono,email,rol,contrasena);
+            System.out.println(newUser);
+            usuarioDAO.registrarUsuario(newUser);
+
+            acceso = login;
+
+        } else if (action.equalsIgnoreCase("publicitarInmueble")) {
+            acceso = publicitarInmueble;
+        } else if (action.equalsIgnoreCase("registrarInmueble")) {
+            String  cedulaCatastral =request.getParameter("ced_catas");
+            String  matriculaInmobiliaria =  request.getParameter("matricula");
+            String  direccion = request.getParameter("direccion");
+            String  ciudad = request.getParameter("ciudad");
+            String  barrio =request.getParameter("barrio");
+            int     estrato = Integer.parseInt(request.getParameter("estrato"));
+            int     area = Integer.parseInt(request.getParameter("area"));
+            int     habitaciones = Integer.parseInt(request.getParameter("habitaciones"));
+            int     banos = Integer.parseInt(request.getParameter("banos"));
+            String  descripcion = request.getParameter("descripcion");
+            int     canonArrrendamiento = Integer.parseInt(request.getParameter("canon"));
+            char    disponibilidad = request.getParameter("disponibilidad").toCharArray()[0];
+            Propiedad newPropiedad = new Propiedad(0,cedulaCatastral,matriculaInmobiliaria,direccion,ciudad,barrio,estrato,area,habitaciones,banos,descripcion,canonArrrendamiento,disponibilidad);
+            System.out.println(newPropiedad);
+            propiedadDAO.publicitarInmueble(newPropiedad);
+            acceso = arrendadorMain;
         }
 
         RequestDispatcher vista=request.getRequestDispatcher(acceso);

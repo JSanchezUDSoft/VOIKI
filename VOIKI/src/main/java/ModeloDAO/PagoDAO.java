@@ -40,9 +40,27 @@ public class PagoDAO implements IPago {
     }
 
     public Pago consultarPagos(char tipoConsulta, String valorConsulta) {
-        return null;
+    Pago pago = null;
+    String sql = "SELECT * FROM pagos WHERE k_contrato = ?";
+
+    try {
+        con = cn.getConnection();
+        ps = con.prepareStatement(sql);
+        ps.setString(1, valorConsulta);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            pago = new Pago();
+            pago.setCuota(rs.getInt("cuota"));
+            pago.setFechaPago(rs.getDate("f_pago").toString());
+            pago.setEstadoPago(rs.getString("i_pago").charAt(0));
+        }
+    } catch (SQLException e) {
+        System.out.println("Error: " + e);
     }
 
+    return pago;
+}
     public boolean cambiarEstadoPago(int idPago, String estado) {
         String sql = "UPDATE pagos SET I_PAGO = '"+estado+"' WHERE (K_PAGO = '"+idPago+"')";
 

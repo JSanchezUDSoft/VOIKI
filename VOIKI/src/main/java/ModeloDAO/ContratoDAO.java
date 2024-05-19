@@ -6,6 +6,7 @@ import Modelo.Contrato;
 
 import java.sql.*;
 import java.util.*;
+
 public class ContratoDAO implements IContrato {
 
     Conexion cn = new Conexion();
@@ -34,7 +35,7 @@ public class ContratoDAO implements IContrato {
     public ArrayList<List<Object>> consultarPeriodoFacturacion(int idContrato){
 
         ArrayList<List<Object>> list = new ArrayList<>();
-        String sql = "select k_contrato, f_inicio, f_finalizacion, v_canonpactado, v_periodofacturacion from CONTRATOS where k_contrato = '"+idContrato+"' and i_firmaarrrendador = 'f' and i_firmaarrendatario = 'f' and i_estadocontrato = 'A'";
+        String sql = "select k_contrato, k_propiedad, f_inicio, f_finalizacion, v_canonpactado, v_periodofacturacion from CONTRATOS where k_contrato = '"+idContrato+"' and i_firmaarrrendador = 'f' and i_firmaarrendatario = 'f' and i_estadocontrato = 'A'";
 
         try{
             con = cn.getConnection();
@@ -44,6 +45,7 @@ public class ContratoDAO implements IContrato {
             while (rs.next()) {
                 List<Object> row = new ArrayList<>();
                 row.add(rs.getString("k_contrato"));
+                row.add(rs.getString("k_propiedad"));
                 row.add(rs.getString("f_inicio"));
                 row.add(rs.getString("f_finalizacion"));
                 row.add(rs.getString("v_canonpactado"));
@@ -73,13 +75,16 @@ public class ContratoDAO implements IContrato {
 
                 // Acceder a cada valor individualmente e imprimirlo
                 int kContrato = (int) primeraFila.get(0);
-                String fInicio = (String) primeraFila.get(1);
-                String fFinalizacion = (String) primeraFila.get(2);
-                int vCanonPactado = (int) primeraFila.get(3);
-                int vPeriodoFacturacion = (int) primeraFila.get(4);
+                int kPropiedad = (int) primeraFila.get(1);
+                String fInicio = (String) primeraFila.get(2);
+                String fFinalizacion = (String) primeraFila.get(3);
+                int vCanonPactado = (int) primeraFila.get(4);
+                int vPeriodoFacturacion = (int) primeraFila.get(5);
 
                 PagoDAO pago = new PagoDAO();
+                PropiedadDAO propiedad = new PropiedadDAO();
 
+                propiedad.cambiarVisibilidadInmueble(kPropiedad);
                 return pago.registrarPlandePagos(kContrato, fInicio, fFinalizacion, vCanonPactado, vPeriodoFacturacion);
 
             } else {

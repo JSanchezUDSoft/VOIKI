@@ -2,6 +2,7 @@ package Modelo;
 
 public class Propiedad {
 
+    private int     idPropiedad;
     private String  cedulaCatastral;
     private String  matriculaInmobiliaria;
     private String  direccion;
@@ -18,7 +19,8 @@ public class Propiedad {
     public Propiedad() {
     }
 
-    public Propiedad(String cedulaCatastral, String matriculaInmobiliaria, String direccion, String ciudad, String barrio, int estrato, int area, int habitaciones, int banos, String descripcion, int canonArrrendamiento, char disponibilidad) {
+    public Propiedad(int idPropiedad, String cedulaCatastral, String matriculaInmobiliaria, String direccion, String ciudad, String barrio, int estrato, int area, int habitaciones, int banos, String descripcion, int canonArrrendamiento, char disponibilidad) {
+        this.idPropiedad = idPropiedad;
         this.cedulaCatastral = cedulaCatastral;
         this.matriculaInmobiliaria = matriculaInmobiliaria;
         this.direccion = direccion;
@@ -31,6 +33,14 @@ public class Propiedad {
         this.descripcion = descripcion;
         this.canonArrrendamiento = canonArrrendamiento;
         this.disponibilidad = disponibilidad;
+    }
+
+    public int getIdPropiedad() {
+        return idPropiedad;
+    }
+
+    public void setIdPropiedad(int idPropiedad) {
+        this.idPropiedad = idPropiedad;
     }
 
     public String getCedulaCatastral() {

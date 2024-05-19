@@ -31,10 +31,30 @@ public class PropiedadDAO implements IPropiedad {
     }
 
     public boolean actualizarInformacionInmueble(Propiedad propiedad) {
-        return false;
+        String sql = "UPDATE propiedades SET D_PROPIEDAD = '"+propiedad.getDireccion()+"', N_CIUDAD = '"+propiedad.getCiudad()+"', N_BARRIO = '"+propiedad.getBarrio()+"', O_ESTRATO = '"+propiedad.getBarrio()+"', V_AREA = '"+propiedad.getArea()+"', V_HABITACIONES = '"+propiedad.getHabitaciones()+"', O_DESCRIPCION = '"+propiedad.getDescripcion()+"', V_CANONARRENDAMIENTO = '"+propiedad.getCanonArrrendamiento()+"' WHERE (K_PROPIEDAD = '"+propiedad.getIdPropiedad()+"')";
+
+        try{
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+
+            return true;
+        }catch (Exception e) {
+            return false;
+        }
     }
 
     public boolean cambiarVisibilidadInmueble(int idInmueble) {
-        return false;
+        String sql = "UPDATE propiedades SET I_DISPONIBILIDAD = 'A' WHERE (K_PROPIEDAD = '" + idInmueble + "')";
+
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

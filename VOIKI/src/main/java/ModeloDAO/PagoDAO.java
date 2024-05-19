@@ -43,7 +43,17 @@ public class PagoDAO implements IPago {
         return null;
     }
 
-    public boolean cambiarEstadoPago(int idPago) {
-        return false;
+    public boolean cambiarEstadoPago(int idPago, String estado) {
+        String sql = "UPDATE pagos SET I_PAGO = '"+estado+"' WHERE (K_PAGO = '"+idPago+"')";
+
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

@@ -27,6 +27,6 @@ public class UsuarioDAO implements IUsuario {
     }
 
     public Usuario consultarArrendadorArrendatario(String cedula) {
-        
+
     }
 }

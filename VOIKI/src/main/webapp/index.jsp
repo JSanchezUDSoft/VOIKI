@@ -26,7 +26,7 @@ https://www.youtube.com/c/CarlosAlfaro007
         <p class="text-center" style="font-size: 80px;">
             <i class="zmdi zmdi-account-circle"></i>
         </p>
-        <p class="text-center text-condensedLight">BIENVENIDO A CINE JUNGLA</p>
+        <p class="text-center text-condensedLight">BIENVENIDO A VOIKI</p>
         <form action="Controlador">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="userName" name="userName">
@@ -37,6 +37,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                 <label class="mdl-textfield__label" for="pass">Contrase&ntilde;a</label>
             </div>
             <input type="submit" name="accion" value="Ingresar" class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #3F51B5; margin: 0 auto; display: block;">
+            <input type="submit" name="accion" value="Registrar" class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: #3F51B5; margin: 0 auto; display: block;">
         </form>
     </div>
 </div>

@@ -3,9 +3,6 @@ package Controlador;
 import Modelo.*;
 import ModeloDAO.*;
 
-
-
-
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -18,36 +15,40 @@ public class Controlador extends HttpServlet {
     String add="Vistas/add.jsp";
     String edit="Vistas/edit.jsp";
 
-    String registrarUsuario = "Vistas/registrar_empleado.jsp";
+    String registrarUsuario = "Vistas/registrar_usuario.jsp";
+    String publicitarInmueble = "Vistas/publicitar_inmueble.jsp";
+    String crearContrato = "Vistas/crear_contrato.jsp";
 
-    String registrarMultiplex = "Vistas/registrar_multiplex.jsp";
+    String consultarInmueble = "Vistas/consultar_inmueble.jsp";
+    String consultarContrato = "Vistas/consultar_contrato.jsp";
+    String consultarPagos = "Vistas/consultar_pagos.jsp";
 
-    String validarCliente = "Vistas/registrar_venta.jsp";
-
-    String registrarFuncion = "Vistas/registrar_funcion.jsp";
+    String actualizarInmueble = "Vistas/actualizar_inmueble.jsp";
 
     String login = "index.jsp";
 
 
-   LogIn logIn = new LogIn();
-   LoginDAO loginDAO = new LoginDAO();
+    LogIn logIn = new LogIn();
+    LoginDAO loginDAO = new LoginDAO();
 
-   Usuario usuario = new Usuario();
-   UsuarioDAO usuarioDAO = new UsuarioDAO();
+    Usuario usuario = new Usuario();
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-   Propiedad propiedad = new Propiedad();
-   PropiedadDAO propiedadDAO = new PropiedadDAO();
+    Propiedad propiedad = new Propiedad();
+    PropiedadDAO propiedadDAO = new PropiedadDAO();
 
-   Contrato contrato = new Contrato();
-   ContratoDAO contratoDAO = new ContratoDAO();
+    Contrato contrato = new Contrato();
+    ContratoDAO contratoDAO = new ContratoDAO();
 
-   Pago pago = new Pago();
-   PagoDAO pagoDAO = new PagoDAO();
+    Pago pago = new Pago();
+    PagoDAO pagoDAO = new PagoDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String acceso = "";
         String action = request.getParameter("accion");
+
         if(action.equalsIgnoreCase("listar")){
             acceso = listar;
         }
@@ -55,7 +56,7 @@ public class Controlador extends HttpServlet {
             acceso = add;
         }
         else if (action.equalsIgnoreCase("Agregar")){
-            int id = Integer.parseInt(request.getParameter("txtId"));
+            /*int id = Integer.parseInt(request.getParameter("txtId"));
             String dni = request.getParameter("txtDni");
             String nombre = request.getParameter("txtNombre");
 
@@ -64,9 +65,9 @@ public class Controlador extends HttpServlet {
             p.setNom(nombre);
             dao.add(p);
 
-            acceso = listar;
+            acceso = listar;*/
         }
-        else if(action.equalsIgnoreCase("registrarUsuario")){
+       /* else if(action.equalsIgnoreCase("registrarUsuario")){
             acceso = registrarUsuario;
         }
         else if(action.equalsIgnoreCase("registrarU")){
@@ -90,21 +91,21 @@ public class Controlador extends HttpServlet {
                 //Randomly generate a character for the password length number of times
                 for(int j = 0; j < 8; j++) {
                     //Add a random lowercase or UPPERCASE character to our randomPassword String
-                    randomPassword += u.randomCharacter();
+                    randomPassword += usuario.randomCharacter();
                 }
                 //Add the random password to your array
 
 
-            u.setCodigoEmpleado(codigoE);
-            u.setIdentificacion(identificacion);
-            u.setNombre(nombre);
-            u.setCelular(celular);
-            u.setFechaContrato(fechaContrato);
-            u.setSalario(salario);
-            u.setMultiplex(multiplex);
-            u.setRol(rol.charAt(0));
-            u.setCargo(cargo.charAt(0));
-            u.setContrasena(randomPassword);
+            usuario.setCodigoEmpleado(codigoE);
+            usuario.setIdentificacion(identificacion);
+            usuario.setNombre(nombre);
+            usuario.setCelular(celular);
+            usuario.setFechaContrato(fechaContrato);
+            usuario.setSalario(salario);
+            usuario.setMultiplex(multiplex);
+            usuario.setRol(rol.charAt(0));
+            usuario.setCargo(cargo.charAt(0));
+            usuario.setContrasena(randomPassword);
 
             daoP.registrarUsuario(u);
 
@@ -123,22 +124,22 @@ public class Controlador extends HttpServlet {
             daoM.registrarMultiplex(m);
 
             acceso = registrarMultiplex;
-        }
+        }*/
         else if(action.equalsIgnoreCase("Ingresar")){
             String  cedula = request.getParameter("userName");
             String  contrasena = request.getParameter("pass");
 
-            l.setCedula(cedula);
-            l.setContrasena(contrasena);
+            logIn.setCedula(cedula);
+            logIn.setContrasena(contrasena);
 
-            byte r = daoL.listar(l);
+            byte r = loginDAO.iniciarSesion(logIn);
 
             if(r==1){
-                acceso = registrarFuncion;
+                acceso = crearContrato;
             }
 
             else if(r==2){
-                acceso = validarCliente;
+                acceso = consultarInmueble;
             }
 
             else{

@@ -24,11 +24,11 @@ public class LoginDAO implements ILogin {
                 rol = rs.getString("i_rol");
             }
 
-            if(rol.equals("d")){
+            if(rol.equals("A")){
                 Conexion.setIdentificacion(logIn.getCedula());
                 return 1;
             }
-            else if(rol.equals("c")){
+            else if(rol.equals("P")){
                 Conexion.setIdentificacion(logIn.getCedula());
                 return 2;
             }

@@ -53,28 +53,28 @@
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  required type="number" pattern="-?[0-9]*([0-9])?" id="identificacion" name="identificacion">
+                                    <input class="mdl-textfield__input"  type="number" pattern="-?[0-9]*([0-9])?" id="identificacion" name="identificacion">
                                     <label class="mdl-textfield__label" for="identificacion">Número de identificación</label>
                                     <span class="mdl-textfield__error">Id invalido</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="text" required pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="nombreUsuario" name="nombreUsuario">
+                                    <input class="mdl-textfield__input" type="text" pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="nombreUsuario" name="nombreUsuario">
                                     <label class="mdl-textfield__label" for="nombreUsuario">Nombre</label>
                                     <span class="mdl-textfield__error">Nombre no valido</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="tel" pattern="-?[0-9+()- ]*(\.[0-9]+)?" required id="telefono" name="telefono">
+                                    <input class="mdl-textfield__input" type="tel" pattern="-?[0-9+()- ]*(\.[0-9]+)?" id="telefono" name="telefono">
                                     <label class="mdl-textfield__label" for="telefono">Teléfono</label>
                                     <span class="mdl-textfield__error">Telefono no valido</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="email" id="email" name="email" required/>
+                                    <input class="mdl-textfield__input" type="email" id="email" name="email"/>
                                     <label class="mdl-textfield__label" for="email">Email</label>
                                     <span class="mdl-textfield__error">Email no valido</span>
                                 </div>

@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Controlador extends HttpServlet {
 
 
-    String registrarUsuario = "Vistas/registrar_Usuario.jsp";
+    String registrarUsuario = "Vistas/registrar_usuario.jsp";
     String publicitarInmueble = "Vistas/publicitar_inmueble.jsp";
     String crearContrato = "Vistas/crear_contrato.jsp";
 
@@ -49,83 +49,7 @@ public class Controlador extends HttpServlet {
         String acceso = "";
         String action = request.getParameter("accion");
 
-        if(action.equalsIgnoreCase("listar")){
-            acceso = listar;
-        }
-        else if (action.equalsIgnoreCase("add")){
-            acceso = add;
-        }
-        else if (action.equalsIgnoreCase("Agregar")){
-            /*int id = Integer.parseInt(request.getParameter("txtId"));
-            String dni = request.getParameter("txtDni");
-            String nombre = request.getParameter("txtNombre");
-
-            p.setId(id);
-            p.setDni(dni);
-            p.setNom(nombre);
-            dao.add(p);
-
-            acceso = listar;*/
-        }
-       /* else if(action.equalsIgnoreCase("registrarUsuario")){
-            acceso = registrarUsuario;
-        }
-        else if(action.equalsIgnoreCase("registrarU")){
-            String  codigoE = "";
-            String  identificacion = request.getParameter("identificacion");
-            String  nombre = request.getParameter("nombreEmpleado");
-            String  celular = request.getParameter("telefono");
-            String  fechaContrato = request.getParameter("fechaContrato");
-            String  salario = request.getParameter("salario");
-            String  multiplex = request.getParameter("idMultiplex");
-            String  rol = request.getParameter("rol");
-            String  cargo = request.getParameter("cargo");
-            String  randomPassword = "";
-
-            //Generar codigo del empleado
-            codigoE = nombre.charAt(0) + identificacion;
-
-            //Generar contraseña aleatoria
-                //Create a variable to store the random password
-
-                //Randomly generate a character for the password length number of times
-                for(int j = 0; j < 8; j++) {
-                    //Add a random lowercase or UPPERCASE character to our randomPassword String
-                    randomPassword += usuario.randomCharacter();
-                }
-                //Add the random password to your array
-
-
-            usuario.setCodigoEmpleado(codigoE);
-            usuario.setIdentificacion(identificacion);
-            usuario.setNombre(nombre);
-            usuario.setCelular(celular);
-            usuario.setFechaContrato(fechaContrato);
-            usuario.setSalario(salario);
-            usuario.setMultiplex(multiplex);
-            usuario.setRol(rol.charAt(0));
-            usuario.setCargo(cargo.charAt(0));
-            usuario.setContrasena(randomPassword);
-
-            daoP.registrarUsuario(u);
-
-            acceso = registrarUsuario;
-        }
-        else if(action.equalsIgnoreCase("registrarMultiplex")){
-            acceso = registrarMultiplex;
-        }
-        else if(action.equalsIgnoreCase("registrarM")){
-            String  nombre = request.getParameter("nombreMultiplex");
-            String  direccion = request.getParameter("direccion");
-
-            m.setNombreM(nombre);
-            m.setDireccion(direccion);
-
-            daoM.registrarMultiplex(m);
-
-            acceso = registrarMultiplex;
-        }*/
-        else if(action.equalsIgnoreCase("Ingresar")){
+        if(action.equalsIgnoreCase("Ingresar")){
             String  cedula = request.getParameter("userName");
             String  contrasena = request.getParameter("pass");
 
@@ -166,6 +90,7 @@ public class Controlador extends HttpServlet {
         } else if (action.equalsIgnoreCase("publicitarInmueble")) {
             acceso = publicitarInmueble;
         } else if (action.equalsIgnoreCase("registrarInmueble")) {
+
             String  cedulaCatastral =request.getParameter("ced_catas");
             String  matriculaInmobiliaria =  request.getParameter("matricula");
             String  direccion = request.getParameter("direccion");
@@ -178,10 +103,64 @@ public class Controlador extends HttpServlet {
             String  descripcion = request.getParameter("descripcion");
             int     canonArrrendamiento = Integer.parseInt(request.getParameter("canon"));
             char    disponibilidad = request.getParameter("disponibilidad").toCharArray()[0];
-            Propiedad newPropiedad = new Propiedad(0,cedulaCatastral,matriculaInmobiliaria,direccion,ciudad,barrio,estrato,area,habitaciones,banos,descripcion,canonArrrendamiento,disponibilidad);
-            System.out.println(newPropiedad);
-            propiedadDAO.publicitarInmueble(newPropiedad);
-            acceso = arrendadorMain;
+
+            propiedad.setCedulaCatastral(cedulaCatastral);
+            propiedad.setMatriculaInmobiliaria(matriculaInmobiliaria);
+            propiedad.setDireccion(direccion);
+            propiedad.setCiudad(ciudad);
+            propiedad.setBarrio(barrio);
+            propiedad.setEstrato(estrato);
+            propiedad.setArea(area);
+            propiedad.setHabitaciones(habitaciones);
+            propiedad.setBanos(banos);
+            propiedad.setDescripcion(descripcion);
+            propiedad.setCanonArrrendamiento(canonArrrendamiento);
+            propiedad.setDisponibilidad(disponibilidad);
+
+            propiedadDAO.publicitarInmueble(propiedad);
+
+            acceso = publicitarInmueble;
+        }
+        else if (action.equalsIgnoreCase("Registrar")) {
+            acceso = registrarUsuario;
+        }
+        else if (action.equalsIgnoreCase("RegistrarU")) {
+            String cedula = (String )request.getParameter("identificacion");
+            String telefono = (String) request.getParameter("telefono");
+            String email = request.getParameter("email");
+            String contrasena = (String) request.getParameter("pass");
+            char rol = request.getParameter("rol").toCharArray()[0];
+            String nombre = request.getParameter("nombreUsuario");
+
+            Usuario newUser = new Usuario(cedula,nombre,telefono,email,rol,contrasena);
+            System.out.println(newUser);
+            usuarioDAO.registrarUsuario(newUser);
+
+            acceso = login;
+
+        } else if (action.equalsIgnoreCase("registrarContrato")) {
+            acceso = crearContrato;
+        } else if (action.equalsIgnoreCase("crearContrato")) {
+
+            String  fechaInicio = request.getParameter("finicio");
+            String  FechaFinalizacion = request.getParameter("ffin");
+            String  cedulaArrendatario = request.getParameter("cArrendador");
+            int     codigoInmueble = Integer.parseInt(request.getParameter("cInmueble"));
+            int     canonPactado = Integer.parseInt(request.getParameter("canon"));
+            int     periodoFacturacion = Integer.parseInt(request.getParameter("periodo"));
+            String  terminosycondicionesContrato = request.getParameter("terms");
+
+            contrato.setFechaInicio(fechaInicio);
+            contrato.setFechaFinalizacion(FechaFinalizacion);
+            contrato.setCedulaArrendatario(cedulaArrendatario);
+            contrato.setCodigoInmueble(codigoInmueble);
+            contrato.setCanonPactado(canonPactado);
+            contrato.setPeriodoFacturacion(periodoFacturacion);
+            contrato.setTerminosycondicionesContrato(terminosycondicionesContrato);
+
+            contratoDAO.crearContrato(contrato);
+
+            acceso = crearContrato;
         }
 
         RequestDispatcher vista=request.getRequestDispatcher(acceso);

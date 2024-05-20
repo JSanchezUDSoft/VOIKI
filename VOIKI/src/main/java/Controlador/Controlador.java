@@ -11,13 +11,10 @@ import java.io.IOException;
 @WebServlet(name = "Controlador", value = "/Controlador")
 public class Controlador extends HttpServlet {
 
-    String listar="Vistas/listar.jsp";
-    String add="Vistas/add.jsp";
-    String edit="Vistas/edit.jsp";
 
     String registrarUsuario = "Vistas/registrar_Usuario.jsp";
     String publicitarInmueble = "Vistas/publicitar_inmueble.jsp";
-    String crearContrato = "Vistas/registrar_contrato.jsp";
+    String crearContrato = "Vistas/crear_contrato.jsp";
 
     String arrendatarioMain = "Vistas/arrendatario_main.jsp";
     String arrendadorMain = "Vistas/arrendador_main.jsp";

@@ -178,77 +178,77 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  required type="number" pattern="-?[0-9]*([0-9])?" id="ced_catas" name="ced_catas">
+                                    <input class="mdl-textfield__input"  type="number" pattern="-?[0-9]*([0-9])?" id="ced_catas" name="ced_catas">
                                     <label class="mdl-textfield__label" for="ced_catas">Cedula Catastral</label>
                                     <span class="mdl-textfield__error">Cedula Invalida</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  required type="number" pattern="-?[0-9]*([0-9])?" id="matricula" name="matricula">
+                                    <input class="mdl-textfield__input"  type="number" pattern="-?[0-9]*([0-9])?" id="matricula" name="matricula">
                                     <label class="mdl-textfield__label" for="matricula">Matricula Inmobilaria</label>
                                     <span class="mdl-textfield__error">Matricula Invalida</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  required type="text" id="direccion" name="direccion">
+                                    <input class="mdl-textfield__input"  type="text" id="direccion" name="direccion">
                                     <label class="mdl-textfield__label" for="direccion">Dirección</label>
                                     <span class="mdl-textfield__error">Dirección invalida</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  required type="text" id="ciudad" name="ciudad">
+                                    <input class="mdl-textfield__input"  type="text" id="ciudad" name="ciudad">
                                     <label class="mdl-textfield__label" for="ciudad">Ciudad</label>
                                     <span class="mdl-textfield__error">Ciudad invalida</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  required type="text" id="barrio" name="barrio">
+                                    <input class="mdl-textfield__input"  type="text" id="barrio" name="barrio">
                                     <label class="mdl-textfield__label" for="barrio">Barrio</label>
                                     <span class="mdl-textfield__error">Barrio invalido</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  required type="number" id="estrato" name="estrato">
+                                    <input class="mdl-textfield__input"  type="number" id="estrato" name="estrato">
                                     <label class="mdl-textfield__label" for="estrato">Estrato</label>
                                     <span class="mdl-textfield__error">Estrato Invalido</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  required type="text" id="area" name="area">
+                                    <input class="mdl-textfield__input"  type="text" id="area" name="area">
                                     <label class="mdl-textfield__label" for="area">Area</label>
                                     <span class="mdl-textfield__error">Area Invalida</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  required type="number" id="habitaciones" name="habitaciones">
+                                    <input class="mdl-textfield__input"  type="number" id="habitaciones" name="habitaciones">
                                     <label class="mdl-textfield__label" for="habitaciones">Habitaciones</label>
                                     <span class="mdl-textfield__error">Número de Habitaciones Invalido</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  required type="number" id="banos" name="banos">
+                                    <input class="mdl-textfield__input"  type="number" id="banos" name="banos">
                                     <label class="mdl-textfield__label" for="banos">Baños</label>
                                     <span class="mdl-textfield__error">Número de Baños Invalido</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" required type="text" id="descripcion" name="descripcion">
+                                    <input class="mdl-textfield__input" type="text" id="descripcion" name="descripcion">
                                     <label class="mdl-textfield__label" for="descripcion">Descripcion del Inmueble</label>
                                     <span class="mdl-textfield__error">Descripcion vacia</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  required type="number" id="canon" name="canon">
+                                    <input class="mdl-textfield__input"  type="number" id="canon" name="canon">
                                     <label class="mdl-textfield__label" for="canon">Canon de Arrendamiento</label>
                                     <span class="mdl-textfield__error">Canon invalido</span>
                                 </div>

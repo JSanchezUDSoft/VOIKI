@@ -207,6 +207,10 @@ public class Controlador extends HttpServlet {
             acceso = consultarPago_P;
 
         }
+        else if(action.equalsIgnoreCase("consultarPago_A")){
+            acceso = consultarPagos_A;
+
+        }
 
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
 

@@ -157,7 +157,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                         <span class="zmdi zmdi-chevron-left"></span>
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
-                        <li class="full-width">
+                        <%/*<li class="full-width">
                             <a href="Controlador?accion=registrarPago" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-tv-list"></i>
@@ -166,7 +166,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                                     Registrar Pago
                                 </div>
                             </a>
-                        </li>
+                        </li>*/%>
                         <li class="full-width">
                             <a href="Controlador?accion=consultarPago_A" class="full-width">
                                 <div class="navLateral-body-cl">
@@ -184,71 +184,3 @@ https://www.youtube.com/c/CarlosAlfaro007
     </div>
 </section>
 <!-- pageContent -->
-<section class="full-width pageContent">
-    <div class="full-width navBar">
-        <!-- Opciones de navBar -->
-    </div>
-    <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col">
-            <div class="full-width panel mdl-shadow--2dp">
-                <div class="full-width panel-title bg-primary text-center tittles">
-                    Consultar Pagos Pendientes
-                </div>
-                <div class="full-width panel-content">
-                    <form method="get" action="Controlador">
-                        <input type="hidden" name="accion" value="consultarPagosPendientes">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <select class="mdl-textfield__input" id="mesConsulta" name="mesConsulta" required>
-                                <option value="" disabled selected>Seleccione un mes</option>
-                                <option value="1">Enero</option>
-                                <option value="2">Febrero</option>
-                                <option value="3">Marzo</option>
-                                <option value="4">Abril</option>
-                                <option value="5">Mayo</option>
-                                <option value="6">Junio</option>
-                                <option value="7">Julio</option>
-                                <option value="8">Agosto</option>
-                                <option value="9">Septiembre</option>
-                                <option value="10">Octubre</option>
-                                <option value="11">Noviembre</option>
-                                <option value="12">Diciembre</option>
-                            </select>
-                            <label class="mdl-textfield__label" for="mesConsulta">Mes de Consulta</label>
-                        </div>
-                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Consultar</button>
-                    </form>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>ID Pago</th>
-                            <th>ID Contrato</th>
-                            <th>Cuota</th>
-                            <th>Fecha de Vencimiento</th>
-                            <th>Estado</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <%
-                            List<Pago> pagosPendientes = (List<Pago>) request.getAttribute("pagosPendientes");
-                            if (pagosPendientes != null) {
-                                for (Pago pago : pagosPendientes) {
-                        %>
-                        <tr>
-                            <td><%= pago.getCuota() %></td>
-                            <td><%= pago.getFechaPago() %></td>
-                            <td><%= pago.getEstadoPago() %></td>
-                        </tr>
-                        <%
-                                }
-                            }
-                        %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="full-width divider-menu-h"></div>
-</section>
-</body>
-</html>

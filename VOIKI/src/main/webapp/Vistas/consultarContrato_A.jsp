@@ -160,7 +160,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                         <span class="zmdi zmdi-chevron-left"></span>
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
-                        <li class="full-width">
+                        <%/*<li class="full-width">
                             <a href="Controlador?accion=registrarPago" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-tv-list"></i>
@@ -169,7 +169,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                                     Registrar Pago
                                 </div>
                             </a>
-                        </li>
+                        </li>*/%>
                         <li class="full-width">
                             <a href="Controlador?accion=consultarPago_A" class="full-width">
                                 <div class="navLateral-body-cl">

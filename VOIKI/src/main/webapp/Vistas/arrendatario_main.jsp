@@ -81,6 +81,16 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
+                            <a href="Controlador?accion=crearContrato" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-local-library"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Crear Contrato
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
                             <a href="Controlador?accion=consultarContrato" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-local-library"></i>
@@ -90,7 +100,6 @@ https://www.youtube.com/c/CarlosAlfaro007
                                 </div>
                             </a>
                         </li>
-                    </ul>
                 </li>
                 <li class="full-width divider-menu-h"></li>
                 <li class="full-width">

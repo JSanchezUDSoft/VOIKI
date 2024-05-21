@@ -159,10 +159,10 @@ https://www.youtube.com/c/CarlosAlfaro007
                     Contrato Pendiente
                 </div>
                 <div class="full-width panel-content">
-                        <%
-                            ContratoDAO dao = new ContratoDAO();
-                            Contrato contrato = dao.consultarContrato((String)request.getAttribute("ced"));
-                        %>
+                    <%
+                        ContratoDAO dao = new ContratoDAO();
+                        Contrato contrato = dao.consultarContrato((String)request.getAttribute("ced"));
+                    %>
                     <form action="Controlador">
                         <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--12-col">
@@ -170,14 +170,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  type="date"  id="finicio" name="finicio" disabled value=<%out.<input class="mdl-textfield__input"  type="date"  id="finicio" name="finicio" disabled value="<%= contrato.getFechaInicio() %>">
-<input class="mdl-textfield__input"  type="date" id="ffin" name="ffin" disabled value="<%= contrato.getFechaFinalizacion() %>">
-<input class="mdl-textfield__input"  type="number" id="cArrendador" name="cArrendador" disabled value="<%= contrato.getCedulaArrendador() %>">
-<input class="mdl-textfield__input"  type="text" id="inmueble" name="inmueble" disabled value="<%= direccion %>">
-<input class="mdl-textfield__input"  type="text" id="ciudad" name="ciudad" disabled value="<%= ciudad %>">
-<input class="mdl-textfield__input"  type="number" id="canon" name="canon" disabled value="<%= contrato.getCanonPactado() %>">
-<textarea class="mdl-textfield__input" id="terms" name="terms" disabled><%= contrato.getTerminosycondicionesContrato() %></textarea>
-<input type="number" id="idContrato" name="idContrato" style="visibility: hidden" value="<%= contrato.getIdContrato() %>">println('"'+contrato.getFechaInicio()+'"');%>>
+                                    <input class="mdl-textfield__input"  type="date"  id="finicio" name="finicio" disabled value=<%out.println('"'+contrato.getFechaInicio()+'"');%>>
                                     <label class="mdl-textfield__label" for="finicio">Fecha de Inicio</label>
                                     <span class="mdl-textfield__error">Cedula Invalida</span>
                                 </div>
@@ -198,29 +191,29 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <%
-                                            Conexion cn = new Conexion();
-                                            Connection con;
-                                            PreparedStatement ps;
-                                            ResultSet rs;
-                                            String direccion="";
-                                            String ciudad="";
-                                            String sql = "select k_propiedad, d_propiedad, n_ciudad from propiedades where k_propiedad =?";
-                                            try {
-                                                con = cn.getConnection();
-                                                ps = con.prepareStatement(sql);
-                                                String codigo = contrato.getCodigoInmueble()+"";
-                                                ps.setString(1,codigo);
-                                                rs = ps.executeQuery();
+                                    <%
+                                        Conexion cn = new Conexion();
+                                        Connection con;
+                                        PreparedStatement ps;
+                                        ResultSet rs;
+                                        String direccion="";
+                                        String ciudad="";
+                                        String sql = "select k_propiedad, d_propiedad, n_ciudad from propiedades where k_propiedad =?";
+                                        try {
+                                            con = cn.getConnection();
+                                            ps = con.prepareStatement(sql);
+                                            String codigo = contrato.getCodigoInmueble()+"";
+                                            ps.setString(1,codigo);
+                                            rs = ps.executeQuery();
 
-                                                while (rs.next()) {
-                                                    direccion = rs.getString(2);
-                                                    ciudad = rs.getString(3);
-                                                }
-                                            }catch (Exception e){
-                                                System.out.println(e);
+                                            while (rs.next()) {
+                                                direccion = rs.getString(2);
+                                                ciudad = rs.getString(3);
                                             }
-                                        %>
+                                        }catch (Exception e){
+                                            System.out.println(e);
+                                        }
+                                    %>
                                     <input class="mdl-textfield__input"  type="text" id="inmueble" name="inmueble" disabled value=<%out.println('"'+direccion+'"');%>>
                                     <label class="mdl-textfield__label" for="inmueble">Inmueble A arrendar</label>
                                 </div>

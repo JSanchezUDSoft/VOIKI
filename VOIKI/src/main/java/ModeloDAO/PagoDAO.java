@@ -22,13 +22,14 @@ public class PagoDAO implements IPago {
         return periodo.getMonths() + periodo.getYears() * 12;
     }
 
-    public boolean registrarPlandePagos(int idPago, String fechaInicio, String fechaFin, int valor, int periodoFacturacion) {
+    public boolean registrarPlandePagos(int idContrato, String fechaInicio, String fechaFin, int valor, int periodoFacturacion) {
         try{
             int meses = calcularMesesEntreFechas(LocalDate.parse(fechaInicio), LocalDate.parse(fechaFin));
-
+            String fechaA = fechaInicio;
             for (int i = 1; i <= meses; i++) {
-                String fecha = LocalDate.parse(fechaInicio).plusMonths(1).toString();
-                String sql = "INSERT INTO pagos (cuota, f_pago, i_pago, k_contrato) VALUES ('" + i + "', '" + fecha + "', 'P', '" + idPago + "')";
+                String fecha = LocalDate.parse(fechaA).plusMonths(1).toString();
+                String sql = "INSERT INTO pagos (cuota, f_pago, i_pago, k_contrato) VALUES ('" + i + "', '" + fecha + "', 'P', '" + idContrato + "')";
+                fechaA = fecha;
                 con = cn.getConnection();
                 ps = con.prepareStatement(sql);
                 ps.executeUpdate();

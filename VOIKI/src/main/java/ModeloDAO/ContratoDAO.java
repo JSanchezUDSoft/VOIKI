@@ -30,7 +30,7 @@ public class ContratoDAO implements IContrato {
 
     public Contrato consultarContrato(String cedula) {
         Contrato contrato = null;
-        String sql = "SELECT * FROM contratos WHERE k_arrendatario = ?";
+        String sql = "SELECT * FROM contratos WHERE k_arrendatario = ? and i_firmaarrendatario = 'P'";
         try {
             System.out.println(cedula);
             con = cn.getConnection();
@@ -58,65 +58,48 @@ public class ContratoDAO implements IContrato {
         }
         return contrato;
     }
-    public ArrayList<List<Object>> consultarPeriodoFacturacion(int idContrato){
+    public String[] consultarPeriodoFacturacion(int idContrato){
+        String[] datos = new String[6];
 
-        ArrayList<List<Object>> list = new ArrayList<>();
-        String sql = "select k_contrato, k_propiedad, f_inicio, f_finalizacion, v_canonpactado, v_periodofacturacion from CONTRATOS where k_contrato = '"+idContrato+"' and i_firmaarrrendador = 'f' and i_firmaarrendatario = 'f' and i_estadocontrato = 'A'";
+        String sql = "select k_contrato, k_propiedad, f_inicio, f_finalizacion, v_canonpactado, v_periodofacturacion from CONTRATOS where k_contrato = '"+idContrato+"' and i_firmaarrendador = 'F' and i_firmaarrendatario = 'P' and i_estadocontrato = 'A'";
 
         try{
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
-            while (rs.next()) {
-                List<Object> row = new ArrayList<>();
-                row.add(rs.getString("k_contrato"));
-                row.add(rs.getString("k_propiedad"));
-                row.add(rs.getString("f_inicio"));
-                row.add(rs.getString("f_finalizacion"));
-                row.add(rs.getString("v_canonpactado"));
-                row.add(rs.getInt("v_periodofacturacion"));
-                list.add(row);
+            while (rs.next()){
+                datos[0] = rs.getString("k_contrato");
+                datos[1] = rs.getString("k_propiedad");
+                datos[2] = rs.getString("f_inicio");
+                datos[3] = rs.getString("f_finalizacion");
+                datos[4] = rs.getString("v_canonpactado");
+                datos[5] = String.valueOf(rs.getInt("v_periodofacturacion"));
             }
 
         }catch (Exception e){
             System.out.println("Error: " + e);
         }
-        return list;
+        return datos;
     }
 
     public boolean firmarContrato(int idContrato) {
         String sql = "UPDATE contratos SET F_FIRMA = now(), I_FIRMAARRENDATARIO = 'F', I_ESTADOCONTRATO = 'F' WHERE (K_CONTRATO = '"+idContrato+"')";
         try{
-            con = cn.getConnection();
-            ps = con.prepareStatement(sql);
-            ps.executeUpdate();
+            String[] datos;
 
-            ArrayList<List<Object>> datosContrato = consultarPeriodoFacturacion(idContrato);
-
-            // Verificación de que hay datos
-            if (!datosContrato.isEmpty()) {
-                // Acceder a la primera fila de datos
-                List<Object> primeraFila = datosContrato.get(0);
-
-                // Acceder a cada valor individualmente e imprimirlo
-                int kContrato = (int) primeraFila.get(0);
-                int kPropiedad = (int) primeraFila.get(1);
-                String fInicio = (String) primeraFila.get(2);
-                String fFinalizacion = (String) primeraFila.get(3);
-                int vCanonPactado = (int) primeraFila.get(4);
-                int vPeriodoFacturacion = (int) primeraFila.get(5);
+            datos = consultarPeriodoFacturacion(idContrato);
 
                 PagoDAO pago = new PagoDAO();
                 PropiedadDAO propiedad = new PropiedadDAO();
 
-                propiedad.cambiarVisibilidadInmueble(kPropiedad);
-                return pago.registrarPlandePagos(kContrato, fInicio, fFinalizacion, vCanonPactado, vPeriodoFacturacion);
-
-            } else {
-                System.out.println("No se encontraron datos para el contrato con ID: " + idContrato);
-                return false;
-            }
+                propiedad.cambiarVisibilidadInmueble(Integer.parseInt(datos[1]));
+                boolean b = pago.registrarPlandePagos(Integer.parseInt(datos[0]), datos[2], datos[3], Integer.parseInt(datos[4]), Integer.parseInt(datos[5]));
+                System.out.println(b);
+                con = cn.getConnection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                return b;
         }catch (Exception e){
             return false;
         }

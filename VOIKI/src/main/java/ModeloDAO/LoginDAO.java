@@ -20,8 +20,13 @@ public class LoginDAO implements ILogin {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             String rol = "";
+            String nombre = "";
             while(rs.next()) {
                 rol = rs.getString("i_rol");
+            }
+
+            while(rs.next()) {
+                nombre = rs.getString("n_nombre");
             }
 
             if(rol.equals("A")){

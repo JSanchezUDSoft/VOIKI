@@ -37,9 +37,9 @@ $(document).ready(function(){
 		  	closeOnConfirm: false
 		},
 		function(isConfirm) {
-		  	if (isConfirm) {
-		    	window.location='';
-		  	}
+			if (isConfirm) {
+				window.location.href = 'index.jsp'; // Redireccionar directamente a index.jsp
+			}
 		});
     });
     /*Mostrar y ocultar submenus*/

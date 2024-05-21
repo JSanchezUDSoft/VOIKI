@@ -42,6 +42,33 @@ https://www.youtube.com/c/CarlosAlfaro007
     <script src="recursos/js/sweetalert2.min.js" ></script>
     <script src="recursos/js/jquery.mCustomScrollbar.concat.min.js" ></script>
     <script src="recursos/js/main.js" ></script>
+    <style>
+        table {
+            font-size: 10px; /* Reducir tamaño de la letra */
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 2px solid #ddd; /* Borde de la tabla */
+            width: 100%;
+        }
+
+        th, td {
+            padding: 5px; /* Reducir espaciado interior de las celdas */
+            text-align: center; /* Centrar contenido de las celdas */
+            border-bottom: 1px solid #ddd; /* Borde inferior de las filas */
+            max-width: 100px; /* Reducir ancho máximo de las celdas */
+            white-space: nowrap; /* Evitar que el texto se ajuste automáticamente */
+            overflow: hidden; /* Ocultar el contenido excedente */
+            text-overflow: ellipsis; /* Mostrar puntos suspensivos si el contenido excede el ancho */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Color de fondo de las celdas del encabezado */
+        }
+
+        tr:hover {
+            background-color: #f5f5f5; /* Cambiar color de fondo al pasar el cursor sobre la fila */
+        }
+    </style>
 </head>
 <body>
 <!-- Notifications area -->
@@ -163,7 +190,24 @@ https://www.youtube.com/c/CarlosAlfaro007
 <section class="full-width pageContent">
     <!-- navBar -->
     <div class="full-width navBar">
-        <!-- Your navBar code here -->
+        <div class="full-width navBar-options">
+            <i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>
+            <div class="mdl-tooltip" for="btn-menu">Hide / Show MENU</div>
+            <nav class="navBar-options-list">
+                <ul class="list-unstyle">
+                    <li class="btn-exit" id="btn-exit">
+                        <i class="zmdi zmdi-power"></i>
+                        <div class="mdl-tooltip" for="btn-exit">LogOut</div>
+                    </li>
+                    <li class="text-condensedLight noLink" ><small>User Name</small></li>
+                    <li class="noLink">
+                        <figure>
+                            <img src="recursos/css/img/avatar-male.png" alt="Avatar" class="img-responsive">
+                        </figure>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col">
@@ -182,12 +226,11 @@ https://www.youtube.com/c/CarlosAlfaro007
                             <th scope="col">Fecha de Finalización</th>
                             <th scope="col">Cédula Arrendador</th>
                             <th scope="col">Cédula Arrendatario</th>
-                            <th scope="col">Código Inmueble</th>
-                            <th scope="col">Canon Pactado</th>
-                            <th scope="col">Periodo de Facturación</th>
-                            <th scope="col">Términos y Condiciones</th>
-                            <th scope="col">Firma Arrendador</th>
-                            <th scope="col">Firma Arrendatario</th>
+                            <th scope="col">CódIn</th>
+                            <th scope="col">CanPac</th>
+                            <th scope="col">PerFac</th>
+                            <th scope="col">FirArrendador</th>
+                            <th scope="col">FirArrendatario</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -207,7 +250,6 @@ https://www.youtube.com/c/CarlosAlfaro007
                             <td><%= contrato.getCodigoInmueble() %></td>
                             <td><%= contrato.getCanonPactado() %></td>
                             <td><%= contrato.getPeriodoFacturacion() %></td>
-                            <td><%= contrato.getTerminosycondicionesContrato() %></td>
                             <td><%= contrato.getFirmaArrendador() %></td>
                             <td><%= contrato.getFirmaArrendatario() %></td>
                         </tr>

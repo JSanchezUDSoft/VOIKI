@@ -32,6 +32,7 @@ public class ContratoDAO implements IContrato {
         Contrato contrato = null;
         String sql = "SELECT * FROM contratos WHERE k_arrendatario = ?";
         try {
+            System.out.println(cedula);
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
             ps.setString(1, cedula);

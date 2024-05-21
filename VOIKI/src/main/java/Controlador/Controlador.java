@@ -19,8 +19,9 @@ public class Controlador extends HttpServlet {
     String arrendatarioMain = "Vistas/arrendatario_main.jsp";
     String arrendadorMain = "Vistas/arrendador_main.jsp";
 
-    String consultarInmueble = "Vistas/consultar_inmueble.jsp";
-    String consultarContrato = "Vistas/consultar_contrato.jsp";
+    String consultarInmueble_A = "Vistas/consultarInmueble.jsp";
+    String consultarInmueble_P = "Vistas/consultarInmuebles.jsp";
+    String consultarContrato = "Vistas/consultarContrato.jsp";
     String consultarPagos = "Vistas/consultar_pagos.jsp";
 
     String actualizarInmueble = "Vistas/actualizar_inmueble.jsp";
@@ -161,6 +162,17 @@ public class Controlador extends HttpServlet {
             contratoDAO.crearContrato(contrato);
 
             acceso = crearContrato;
+        }
+        else if(action.equalsIgnoreCase("consultarInmuebles")){
+            acceso = consultarInmueble_P;
+        } else if (action.equalsIgnoreCase("consultarContrato")) {
+            request.setAttribute("ced",logIn.getCedula());
+            acceso = consultarContrato;
+        } else if (action.equalsIgnoreCase("firmarContrato")) {
+            if (request.getParameter("idContrato") != null) {
+                contratoDAO.firmarContrato(Integer.parseInt(request.getParameter("idContrato")));
+            }
+            acceso = arrendatarioMain;
         }
 
         RequestDispatcher vista=request.getRequestDispatcher(acceso);

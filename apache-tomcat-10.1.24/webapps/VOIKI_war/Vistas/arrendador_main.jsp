@@ -20,7 +20,7 @@ https://www.youtube.com/c/CarlosAlfaro007
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registrar cliente</title>
+    <title>Voiki</title>
     <link rel="stylesheet" href="recursos/css/normalize.css">
     <link rel="stylesheet" href="recursos/css/sweetalert2.css">
     <link rel="stylesheet" href="recursos/css/material.min.css">
@@ -57,7 +57,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=registrarInmueble" class="full-width">
+                            <a href="Controlador?accion=publicitarInmueble" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-tv-list"></i>
                                 </div>
@@ -67,7 +67,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </a>
                         </li>
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarInmueble" class="full-width">
+                            <a href="Controlador?accion=consultarInmuebles" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-pages"></i>
                                 </div>

@@ -20,7 +20,7 @@ https://www.youtube.com/c/CarlosAlfaro007
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registrar cliente</title>
+    <title>Voiki</title>
     <link rel="stylesheet" href="recursos/css/normalize.css">
     <link rel="stylesheet" href="recursos/css/sweetalert2.css">
     <link rel="stylesheet" href="recursos/css/material.min.css">
@@ -57,22 +57,12 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=publicitarInmueble" class="full-width">
+                            <a href="Controlador?accion=consultarInmuebles" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-tv-list"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Publicitar Inmueble
-                                </div>
-                            </a>
-                        </li>
-                        <li class="full-width">
-                            <a href="Controlador?accion=consultarInmueble" class="full-width">
-                                <div class="navLateral-body-cl">
-                                    <i class="zmdi zmdi-pages"></i>
-                                </div>
-                                <div class="navLateral-body-cr">
-                                    Consultar Inmuebles
+                                    Consultar Inmueble
                                 </div>
                             </a>
                         </li>
@@ -91,12 +81,12 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=registrarContrato" class="full-width">
+                            <a href="Controlador?accion=consultarContrato" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-local-library"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Crear Contrato
+                                    Consultar Contrato
                                 </div>
                             </a>
                         </li>
@@ -115,22 +105,12 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=registrarPago" class="full-width">
-                                <div class="navLateral-body-cl">
-                                    <i class="zmdi zmdi-tv-list"></i>
-                                </div>
-                                <div class="navLateral-body-cr">
-                                    Registrar Pago
-                                </div>
-                            </a>
-                        </li>
-                        <li class="full-width">
-                            <a href="Controlador?accion=consultarPago" class="full-width">
+                            <a href="Controlador?accion=consultarPlanPago" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-search"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Pago
+                                    Consultar Plan de Pagos
                                 </div>
                             </a>
                         </li>

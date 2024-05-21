@@ -176,7 +176,7 @@ public class Controlador extends HttpServlet {
 
             String  fechaInicio = request.getParameter("finicio");
             String  FechaFinalizacion = request.getParameter("ffin");
-            String  cedulaArrendatario = request.getParameter("cArrendador");
+            String  cedulaArrendador = request.getParameter("cArrendador");
             int     codigoInmueble = Integer.parseInt(request.getParameter("cInmueble"));
             int     canonPactado = Integer.parseInt(request.getParameter("canon"));
             int     periodoFacturacion = Integer.parseInt(request.getParameter("periodo"));
@@ -184,7 +184,7 @@ public class Controlador extends HttpServlet {
 
             contrato.setFechaInicio(fechaInicio);
             contrato.setFechaFinalizacion(FechaFinalizacion);
-            contrato.setCedulaArrendatario(cedulaArrendatario);
+            contrato.setCedulaArrendador(cedulaArrendador);
             contrato.setCodigoInmueble(codigoInmueble);
             contrato.setCanonPactado(canonPactado);
             contrato.setPeriodoFacturacion(periodoFacturacion);

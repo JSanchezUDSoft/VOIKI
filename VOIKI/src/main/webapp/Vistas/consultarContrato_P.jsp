@@ -195,7 +195,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <input class="mdl-textfield__input"  type="number" id="cArrendador" name="cArrendador" disabled value=<%out.println('"'+contrato.getCedulaArrendador()+'"');%>>
-                                    <label class="mdl-textfield__label" for="cArrendador">Cédula arrendador</label>
+                                    <label class="mdl-textfield__label" for="cArrendador">Cédula arrendatario</label>
                                     <span class="mdl-textfield__error">Dirección invalida</span>
                                 </div>
                             </div>

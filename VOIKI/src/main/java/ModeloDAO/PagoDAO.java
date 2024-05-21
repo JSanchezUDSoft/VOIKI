@@ -43,6 +43,8 @@ public class PagoDAO implements IPago {
         }
     }
 
+
+
     public List<Pago> consultarPagos(char tipoConsulta, String valorConsulta) {
         List<Pago> pagos = new ArrayList<>();
         String sql = "";
@@ -93,4 +95,26 @@ public class PagoDAO implements IPago {
             return false;
         }
     }
+    /*
+    public List<Pago> consultarPagosPendientesPorMes(int mes) {
+        List<Pago> lista = new ArrayList<>();
+        String sql = "SELECT * FROM Pagos WHERE MONTH(fecha_vencimiento) = ? AND estado = 'pendiente'";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, mes);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Pago pago = new Pago();
+                pago.setCuota(rs.getDouble("cuota"));
+                pago.setFechaPago(rs.getDate("fecha_vencimiento"));
+                pago.setEstadoPago(rs.getString("estado"));
+                lista.add(pago);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }*/
+
 }

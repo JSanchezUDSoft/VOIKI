@@ -100,6 +100,16 @@ https://www.youtube.com/c/CarlosAlfaro007
                                 </div>
                             </a>
                         </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarContrato" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-local-library"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Consultar Contrato
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="full-width divider-menu-h"></li>

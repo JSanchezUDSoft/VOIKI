@@ -18,8 +18,6 @@
 <%@ page import="Modelo.Contrato" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="ModeloDAO.PagoDAO" %>
-<%@ page import="Modelo.Pago" %>
 <!--
 * Copyright 2018 Carlos Eduardo Alfaro Orellana
 https://www.youtube.com/c/CarlosAlfaro007
@@ -95,12 +93,22 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarInmueble_P" class="full-width">
+                            <a href="Controlador?accion=publicitarInmueble" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-tv-list"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Inmueble
+                                    Publicitar Inmueble
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarInmueble_A" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-pages"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Consultar Inmuebles
                                 </div>
                             </a>
                         </li>
@@ -119,7 +127,17 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarContrato_P" class="full-width">
+                            <a href="Controlador?accion=registrarContrato" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-local-library"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Crear Contrato
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarContrato_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-local-library"></i>
                                 </div>
@@ -143,12 +161,22 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarPago_P" class="full-width">
+                            <a href="Controlador?accion=registrarPago" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-tv-list"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Registrar Pago
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarPago_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-search"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Plan de Pagos
+                                    Consultar Pago
                                 </div>
                             </a>
                         </li>
@@ -185,35 +213,47 @@ https://www.youtube.com/c/CarlosAlfaro007
         <div class="mdl-cell mdl-cell--12-col">
             <div class="full-width panel mdl-shadow--2dp">
                 <div class="full-width panel-tittle bg-primary text-center tittles">
-                    Contrato Pendiente
+                    Contratos
                 </div>
                 <div class="full-width panel-content">
-
                     <table>
                         <thead>
                         <tr>
-                            <th scope="col">Valor pago</th>
-                            <th scope="col">Fecha de pago</th>
-                            <th scope="col">Estado de pago</th>
+                            <th scope="col">ID Contrato</th>
+                            <th scope="col">Fecha de Creación</th>
+                            <th scope="col">Fecha de Firma</th>
+                            <th scope="col">Fecha de Inicio</th>
+                            <th scope="col">Fecha de Finalización</th>
+                            <th scope="col">Cédula Arrendador</th>
+                            <th scope="col">Cédula Arrendatario</th>
+                            <th scope="col">CódIn</th>
+                            <th scope="col">CanPac</th>
+                            <th scope="col">PerFac</th>
+                            <th scope="col">FirArrendador</th>
+                            <th scope="col">FirArrendatario</th>
                         </tr>
                         </thead>
                         <tbody>
                         <%
-                            PagoDAO dao = new PagoDAO();
-                            List<Pago> pagosList= new ArrayList<>();
-                            pagosList = dao.consultarPagos('C',request.getParameter("ced"));
-                            try {
-                                for(Pago pago:pagosList){
-                                    out.println("<tr>");
-                                    out.println("<td>" + pago.getCuota()+ "</td>");
-                                    out.println("<td>" + pago.getFechaPago() + "</td>");
-                                    out.println("<td>" + pago.getEstadoPago() + "</td>");
-                                    out.println("</tr>");
-                                }
-                            }catch (Exception e){
-
-                            }
+                            ContratoDAO contratoDAO = new ContratoDAO();
+                            List<Contrato> contratos = contratoDAO.consultarContratosPactados((String)request.getAttribute("ced"));
+                            for (Contrato contrato : contratos) {
                         %>
+                        <tr>
+                            <td><%= contrato.getIdContrato() %></td>
+                            <td><%= contrato.getFechaCreacion() %></td>
+                            <td><%= contrato.getFechaFirma() %></td>
+                            <td><%= contrato.getFechaInicio() %></td>
+                            <td><%= contrato.getFechaFinalizacion() %></td>
+                            <td><%= contrato.getCedulaArrendador() %></td>
+                            <td><%= contrato.getCedulaArrendatario() %></td>
+                            <td><%= contrato.getCodigoInmueble() %></td>
+                            <td><%= contrato.getCanonPactado() %></td>
+                            <td><%= contrato.getPeriodoFacturacion() %></td>
+                            <td><%= contrato.getFirmaArrendador() %></td>
+                            <td><%= contrato.getFirmaArrendatario() %></td>
+                        </tr>
+                        <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -221,7 +261,6 @@ https://www.youtube.com/c/CarlosAlfaro007
         </div>
     </div>
     <div class="full-width divider-menu-h"></div>
-
 </section>
 </body>
 </html>

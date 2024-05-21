@@ -7,7 +7,6 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "Controlador", value = "/Controlador")
 public class Controlador extends HttpServlet {
@@ -215,20 +214,16 @@ public class Controlador extends HttpServlet {
             }
             acceso = arrendatarioMain;
 
-        } /*else if (action.equalsIgnoreCase("consultarPago_A")) {
-            String mesConsulta = request.getParameter("mesConsulta");
-            // Verificar que el parámetro no sea nulo o vacío
-            if (mesConsulta != null && !mesConsulta.isEmpty()) {
-                // Convertir el valor a entero
-                int mes = Integer.parseInt(mesConsulta);
-                // Llamar al método en el DAO para consultar los pagos pendientes por mes
-                List<Pago> pagosPendientes = pagoDAO.consultarPagosPendientesPorMes(mes);
-                // Establecer los resultados como atributo de solicitud para pasarlos al JSP
-                request.setAttribute("pagosPendientes", pagosPendientes);
+        } else if (action.equalsIgnoreCase("firmarContrato")) {
+            if (request.getParameter("idContrato") != null) {
+                contratoDAO.firmarContrato(Integer.parseInt(request.getParameter("idContrato")));
             }
-            // Redirigir a la vista correspondiente
-            acceso = consultarPago_A; // O a la vista adecuada para mostrar los resultados
-        } */
+            acceso = arrendadorMain;
+        }
+        else if(action.equalsIgnoreCase("consultarPago_P")){
+            request.setAttribute("ced",logIn.getCedula());
+            acceso = consultarPagos_P;
+        }
 
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
 

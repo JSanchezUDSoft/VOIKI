@@ -80,16 +80,6 @@ https://www.youtube.com/c/CarlosAlfaro007
                         <span class="zmdi zmdi-chevron-left"></span>
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
-                        <%--<li class="full-width">
-                            <a href="Controlador?accion=registrarContrato_P" class="full-width">
-                                <div class="navLateral-body-cl">
-                                    <i class="zmdi zmdi-local-library"></i>
-                                </div>
-                                <div class="navLateral-body-cr">
-                                    Crear Contrato
-                                </div>
-                            </a>
-                        </li>--%>
                         <li class="full-width">
                             <a href="Controlador?accion=consultarContrato_P" class="full-width">
                                 <div class="navLateral-body-cl">

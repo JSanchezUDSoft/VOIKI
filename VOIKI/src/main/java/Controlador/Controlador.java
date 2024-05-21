@@ -15,14 +15,22 @@ public class Controlador extends HttpServlet {
     String registrarUsuario = "Vistas/registrar_usuario.jsp";
     String publicitarInmueble = "Vistas/publicitar_inmueble.jsp";
     String crearContrato = "Vistas/crear_contrato.jsp";
+    String crearContrato_P = "Vistas/crear_contrato_P.jsp";
+
 
     String arrendatarioMain = "Vistas/arrendatario_main.jsp";
     String arrendadorMain = "Vistas/arrendador_main.jsp";
 
-    String consultarInmueble_A = "Vistas/consultarInmueble.jsp";
-    String consultarInmueble_P = "Vistas/consultarInmuebles.jsp";
-    String consultarContrato = "Vistas/consultarContrato.jsp";
-    String consultarPagos = "Vistas/consultar_pagos.jsp";
+    String consultarInmueble_A = "Vistas/consultarInmueble_A.jsp";
+    String consultarInmueble_P = "Vistas/consultarInmueble_P.jsp";
+
+    String consultarContrato_A = "Vistas/consultarContrato_A.jsp";
+    String consultarContrato_P = "Vistas/consultarContrato_P.jsp";
+
+    String registrarPago = "Vistas/consultarPago_A.jsp";
+
+    String consultarPagos_A = "Vistas/consultarPago_A.jsp";
+    String consultarPagos_P = "Vistas/consultarPago_P.jsp";
 
     String actualizarInmueble = "Vistas/actualizar_inmueble.jsp";
 
@@ -141,7 +149,9 @@ public class Controlador extends HttpServlet {
 
         } else if (action.equalsIgnoreCase("registrarContrato")) {
             acceso = crearContrato;
-        } else if (action.equalsIgnoreCase("crearContrato")) {
+        } else if (action.equalsIgnoreCase("registrarContrato_P")) {
+            acceso = crearContrato_P;
+        }else if (action.equalsIgnoreCase("crearContrato")) {
 
             String  fechaInicio = request.getParameter("finicio");
             String  FechaFinalizacion = request.getParameter("ffin");
@@ -162,17 +172,53 @@ public class Controlador extends HttpServlet {
             contratoDAO.crearContrato(contrato);
 
             acceso = crearContrato;
-        }
-        else if(action.equalsIgnoreCase("consultarInmuebles")){
+        }/*else if (action.equalsIgnoreCase("crearContrato_P")) {
+
+            String  fechaInicio = request.getParameter("finicio");
+            String  FechaFinalizacion = request.getParameter("ffin");
+            String  cedulaArrendador = request.getParameter("cArrendador");
+            int     codigoInmueble = Integer.parseInt(request.getParameter("cInmueble"));
+            int     canonPactado = Integer.parseInt(request.getParameter("canon"));
+            int     periodoFacturacion = Integer.parseInt(request.getParameter("periodo"));
+            String  terminosycondicionesContrato = request.getParameter("terms");
+
+            contrato.setFechaInicio(fechaInicio);
+            contrato.setFechaFinalizacion(FechaFinalizacion);
+            contrato.setCedulaArrendador(cedulaArrendador);
+            contrato.setCodigoInmueble(codigoInmueble);
+            contrato.setCanonPactado(canonPactado);
+            contrato.setPeriodoFacturacion(periodoFacturacion);
+            contrato.setTerminosycondicionesContrato(terminosycondicionesContrato);
+
+            contratoDAO.crearContrato(contrato);
+
+            acceso = crearContrato_P;
+        }*/
+        else if(action.equalsIgnoreCase("consultarInmueble_P")){
             acceso = consultarInmueble_P;
-        } else if (action.equalsIgnoreCase("consultarContrato")) {
+        }
+        else if(action.equalsIgnoreCase("consultarInmueble_A")){
+            acceso = consultarInmueble_A;
+
+        } else if (action.equalsIgnoreCase("consultarContrato_A")) {
             request.setAttribute("ced",logIn.getCedula());
-            acceso = consultarContrato;
-        } else if (action.equalsIgnoreCase("firmarContrato")) {
+            acceso = consultarContrato_A;
+
+        } else if (action.equalsIgnoreCase("consultarContrato_P")) {
+            request.setAttribute("ced",logIn.getCedula());
+            acceso = consultarContrato_P;
+
+        } else if (action.equalsIgnoreCase("firmarContrato_P")) {
             if (request.getParameter("idContrato") != null) {
                 contratoDAO.firmarContrato(Integer.parseInt(request.getParameter("idContrato")));
             }
             acceso = arrendatarioMain;
+
+        } else if (action.equalsIgnoreCase("firmarContrato")) {
+            if (request.getParameter("idContrato") != null) {
+                contratoDAO.firmarContrato(Integer.parseInt(request.getParameter("idContrato")));
+            }
+            acceso = arrendadorMain;
         }
 
         RequestDispatcher vista=request.getRequestDispatcher(acceso);

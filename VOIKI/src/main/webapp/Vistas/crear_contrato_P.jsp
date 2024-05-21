@@ -9,15 +9,6 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="ModeloDAO.PropiedadDAO" %>
-<%@ page import="java.util.List" %>
-<%@ page import="Modelo.Propiedad" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.io.IOException" %>
-<%@ page import="ModeloDAO.ContratoDAO" %>
-<%@ page import="Modelo.Contrato" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <!--
 * Copyright 2018 Carlos Eduardo Alfaro Orellana
 https://www.youtube.com/c/CarlosAlfaro007
@@ -66,12 +57,12 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarInmueble" class="full-width">
+                            <a href="Controlador?accion=consultarInmueble_P" class="full-width">
                                 <div class="navLateral-body-cl">
-                                    <i class="zmdi zmdi-tv-list"></i>
+                                    <i class="zmdi zmdi-pages"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Inmueble
+                                    Consultar Inmuebles
                                 </div>
                             </a>
                         </li>
@@ -90,7 +81,17 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarContrato" class="full-width">
+                            <a href="Controlador?accion=crearContrato_P" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-local-library"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Crear Contrato
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarContrato_P" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-local-library"></i>
                                 </div>
@@ -114,12 +115,22 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarPlanPago" class="full-width">
+                            <a href="Controlador?accion=registrarPago" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-tv-list"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Registrar Pago
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarPago_P" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-search"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Plan de Pagos
+                                    Consultar Pago
                                 </div>
                             </a>
                         </li>
@@ -152,17 +163,14 @@ https://www.youtube.com/c/CarlosAlfaro007
             </nav>
         </div>
     </div>
+    <div class="full-width divider-menu-h"></div>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col">
             <div class="full-width panel mdl-shadow--2dp">
                 <div class="full-width panel-tittle bg-primary text-center tittles">
-                    Contrato Pendiente
+                    Crear nuevo contrato
                 </div>
                 <div class="full-width panel-content">
-                        <%
-                            ContratoDAO dao = new ContratoDAO();
-                            Contrato contrato = dao.consultarContrato((String)request.getAttribute("ced"));
-                        %>
                     <form action="Controlador">
                         <div class="mdl-grid">
                             <div class="mdl-cell mdl-cell--12-col">
@@ -170,89 +178,115 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  type="date"  id="finicio" name="finicio" disabled value=<%out.println('"'+contrato.getFechaInicio()+'"');%>>
-                                    <label class="mdl-textfield__label" for="finicio">Fecha de Inicio</label>
+                                    <input class="mdl-textfield__input"  type="date"  id="finicio" name="finicio">
+                                    <label class="mdl-textfield__label" for="finicio">Fecha de inicio</label>
                                     <span class="mdl-textfield__error">Cedula Invalida</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  type="date" id="ffin" name="ffin" disabled value=<%out.println('"'+contrato.getFechaFinalizacion()+'"');%>>
-                                    <label class="mdl-textfield__label" for="ffin">Fecha de Finalizacion</label>
+                                    <input class="mdl-textfield__input"  type="date" id="ffin" name="ffin">
+                                    <label class="mdl-textfield__label" for="ffin">Fecha de finalización</label>
                                     <span class="mdl-textfield__error">Matricula Invalida</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  type="number" id="cArrendador" name="cArrendador" disabled value=<%out.println('"'+contrato.getCedulaArrendador()+'"');%>>
+                                    <input class="mdl-textfield__input"  type="number" id="cArrendador" name="cArrendador">
                                     <label class="mdl-textfield__label" for="cArrendador">Cédula arrendador</label>
                                     <span class="mdl-textfield__error">Dirección invalida</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <select id="cInmueble" name="cInmueble" class="mdl-textfield__input">
+                                        <option value="" selected>Seleccione el inmueble a arrendar</option>
                                         <%
                                             Conexion cn = new Conexion();
                                             Connection con;
                                             PreparedStatement ps;
                                             ResultSet rs;
-                                            String direccion="";
-                                            String ciudad="";
-                                            String sql = "select k_propiedad, d_propiedad, n_ciudad from propiedades where k_propiedad =?";
+
+                                            String sql = "select k_propiedad, d_propiedad from propiedades where i_disponibilidad = 'D'";
                                             try {
                                                 con = cn.getConnection();
                                                 ps = con.prepareStatement(sql);
-                                                String codigo = contrato.getCodigoInmueble()+"";
-                                                ps.setString(1,codigo);
                                                 rs = ps.executeQuery();
 
                                                 while (rs.next()) {
-                                                    direccion = rs.getString(2);
-                                                    ciudad = rs.getString(3);
+                                                    out.println("<OPTION VALUE=\""+ rs.getString(1) +"\">"+ rs.getString(2) +"</OPTION>");
                                                 }
+
                                             }catch (Exception e){
                                                 System.out.println(e);
                                             }
                                         %>
-                                    <input class="mdl-textfield__input"  type="text" id="inmueble" name="inmueble" disabled value=<%out.println('"'+direccion+'"');%>>
-                                    <label class="mdl-textfield__label" for="inmueble">Inmueble A arrendar</label>
+                                    </select>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  type="text" id="ciudad" name="ciudad" disabled value=<%out.println('"'+ciudad+'"');%>>
-                                    <label class="mdl-textfield__label" for="inmueble">Ciudad del inmueble</label>
-                                </div>
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  type="number" id="canon" name="canon" disabled value=<%String canon = contrato.getCanonPactado()+""; out.println('"'+canon+'"');%>>
+                                    <input class="mdl-textfield__input"  type="number" id="canon" name="canon">
                                     <label class="mdl-textfield__label" for="canon">Canon de arrendamiento pactado</label>
-                                    <span class="mdl-textfield__error">Canon invalido</span>
+                                    <span class="mdl-textfield__error">Canon invalida</span>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <textarea class="mdl-textfield__input" id="terms" name="terms" disabled><%out.println(contrato.getTerminosycondicionesContrato());%></textarea>
+                                    <select name="periodo" class="mdl-textfield__input">
+                                        <option value="">Seleccione día de pago</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <textarea class="mdl-textfield__input" id="terms" name="terms"></textarea>
                                     <label class="mdl-textfield__label" for="terms">Terminos y condiciones contrato</label>
                                     <span class="mdl-textfield__error">Barrio invalido</span>
                                 </div>
                             </div>
-                            <input  type="number" id="idContrato" name="idContrato" style="visibility: hidden" value=<%String id = contrato.getIdContrato()+""; out.println('"'+id+'"');%>>
                         </div>
                         <p class="text-center">
-                            <button type="submit" name="accion" value="firmarContrato" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addFuncion">
-                                <i class="zmdi zmdi-check"></i>
+                            <button type="submit" name="accion" value="crearContrato_P" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addFuncion">
+                                <i class="zmdi zmdi-plus"></i>
                             </button>
-                        <div class="mdl-tooltip" for="btn-addCompany">Firmar Contrato</div>
+                        <div class="mdl-tooltip" for="btn-addCompany">Registrar Contrato</div>
                         </p>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div class="full-width divider-menu-h"></div>
-
 </section>
 </body>
 </html>

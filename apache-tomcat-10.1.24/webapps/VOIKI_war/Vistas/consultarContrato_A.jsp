@@ -14,6 +14,10 @@
 <%@ page import="Modelo.Propiedad" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.io.IOException" %>
+<%@ page import="ModeloDAO.ContratoDAO" %>
+<%@ page import="Modelo.Contrato" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <!--
 * Copyright 2018 Carlos Eduardo Alfaro Orellana
 https://www.youtube.com/c/CarlosAlfaro007
@@ -38,6 +42,33 @@ https://www.youtube.com/c/CarlosAlfaro007
     <script src="recursos/js/sweetalert2.min.js" ></script>
     <script src="recursos/js/jquery.mCustomScrollbar.concat.min.js" ></script>
     <script src="recursos/js/main.js" ></script>
+    <style>
+        table {
+            font-size: 10px; /* Reducir tamaño de la letra */
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 2px solid #ddd; /* Borde de la tabla */
+            width: 100%;
+        }
+
+        th, td {
+            padding: 5px; /* Reducir espaciado interior de las celdas */
+            text-align: center; /* Centrar contenido de las celdas */
+            border-bottom: 1px solid #ddd; /* Borde inferior de las filas */
+            max-width: 100px; /* Reducir ancho máximo de las celdas */
+            white-space: nowrap; /* Evitar que el texto se ajuste automáticamente */
+            overflow: hidden; /* Ocultar el contenido excedente */
+            text-overflow: ellipsis; /* Mostrar puntos suspensivos si el contenido excede el ancho */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Color de fondo de las celdas del encabezado */
+        }
+
+        tr:hover {
+            background-color: #f5f5f5; /* Cambiar color de fondo al pasar el cursor sobre la fila */
+        }
+    </style>
 </head>
 <body>
 <!-- Notifications area -->
@@ -62,12 +93,22 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarInmueble" class="full-width">
+                            <a href="Controlador?accion=publicitarInmueble" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-tv-list"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Inmueble
+                                    Publicitar Inmueble
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarInmueble_A" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-pages"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Consultar Inmuebles
                                 </div>
                             </a>
                         </li>
@@ -86,7 +127,17 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarContrato" class="full-width">
+                            <a href="Controlador?accion=registrarContrato" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-local-library"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Crear Contrato
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarContrato_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-local-library"></i>
                                 </div>
@@ -110,12 +161,22 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarPlanPago" class="full-width">
+                            <a href="Controlador?accion=registrarPago" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-tv-list"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Registrar Pago
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarPago_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-search"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Plan de Pagos
+                                    Consultar Pago
                                 </div>
                             </a>
                         </li>
@@ -152,46 +213,47 @@ https://www.youtube.com/c/CarlosAlfaro007
         <div class="mdl-cell mdl-cell--12-col">
             <div class="full-width panel mdl-shadow--2dp">
                 <div class="full-width panel-tittle bg-primary text-center tittles">
-                    Inmuebles
+                    Contratos
                 </div>
                 <div class="full-width panel-content">
                     <table>
                         <thead>
-                            <tr>
-                                <th scope="col">Canon</th>
-                                <th scope="col">Descripción</th>
-                                <th scope="col">Ciudad</th>
-                                <th scope="col">Dirección</th>
-                                <th scope="col">Barrio</th>
-                                <th scope="col">Estrato</th>
-                                <th scope="col">Arear</th>
-                                <th scope="col">Número de habitaciones</th>
-                                <th scope="col">Número de baños</th>
-                            </tr>
+                        <tr>
+                            <th scope="col">ID Contrato</th>
+                            <th scope="col">Fecha de Creación</th>
+                            <th scope="col">Fecha de Firma</th>
+                            <th scope="col">Fecha de Inicio</th>
+                            <th scope="col">Fecha de Finalización</th>
+                            <th scope="col">Cédula Arrendador</th>
+                            <th scope="col">Cédula Arrendatario</th>
+                            <th scope="col">CódIn</th>
+                            <th scope="col">CanPac</th>
+                            <th scope="col">PerFac</th>
+                            <th scope="col">FirArrendador</th>
+                            <th scope="col">FirArrendatario</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <%
-                            PropiedadDAO dao = new PropiedadDAO();
-                            List<Propiedad> propiedadesList= new ArrayList<>();
-                            propiedadesList = dao.consultarInmueblesDisponibles();
-                            try {
-                                for(Propiedad prop:propiedadesList){
-                                    out.println("<tr>");
-                                    out.println("<td>" + prop.getCanonArrrendamiento() + "</td>");
-                                    out.println("<td>" + prop.getDescripcion() + "</td>");
-                                    out.println("<td>" + prop.getCiudad() + "</td>");
-                                    out.println("<td>" + prop.getDireccion() + "</td>");
-                                    out.println("<td>" + prop.getBarrio() + "</td>");
-                                    out.println("<td>" + prop.getEstrato() + "</td>");
-                                    out.println("<td>" + prop.getArea() + "</td>");
-                                    out.println("<td>" + prop.getHabitaciones() + "</td>");
-                                    out.println("<td>" + prop.getBanos() + "</td>");
-                                    out.println("</tr>");
-                                }
-                            }catch (Exception e){
-
-                            }
+                        <%
+                            ContratoDAO contratoDAO = new ContratoDAO();
+                            List<Contrato> contratos = contratoDAO.consultarContratosPactados((String)request.getAttribute("ced"));
+                            for (Contrato contrato : contratos) {
                         %>
+                        <tr>
+                            <td><%= contrato.getIdContrato() %></td>
+                            <td><%= contrato.getFechaCreacion() %></td>
+                            <td><%= contrato.getFechaFirma() %></td>
+                            <td><%= contrato.getFechaInicio() %></td>
+                            <td><%= contrato.getFechaFinalizacion() %></td>
+                            <td><%= contrato.getCedulaArrendador() %></td>
+                            <td><%= contrato.getCedulaArrendatario() %></td>
+                            <td><%= contrato.getCodigoInmueble() %></td>
+                            <td><%= contrato.getCanonPactado() %></td>
+                            <td><%= contrato.getPeriodoFacturacion() %></td>
+                            <td><%= contrato.getFirmaArrendador() %></td>
+                            <td><%= contrato.getFirmaArrendatario() %></td>
+                        </tr>
+                        <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -199,7 +261,6 @@ https://www.youtube.com/c/CarlosAlfaro007
         </div>
     </div>
     <div class="full-width divider-menu-h"></div>
-
 </section>
 </body>
 </html>

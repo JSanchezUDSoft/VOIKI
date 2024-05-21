@@ -57,7 +57,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=registrarInmueble" class="full-width">
+                            <a href="Controlador?accion=publicitarInmueble" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-tv-list"></i>
                                 </div>
@@ -67,7 +67,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </a>
                         </li>
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarInmueble" class="full-width">
+                            <a href="Controlador?accion=consultarInmueble_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-pages"></i>
                                 </div>
@@ -91,12 +91,22 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=registrarContrato" class="full-width">
+                            <a href="Controlador?accion=crearContrato" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-local-library"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
                                     Crear Contrato
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarContrato_A" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-local-library"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Consultar Contrato
                                 </div>
                             </a>
                         </li>
@@ -125,7 +135,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </a>
                         </li>
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarPago" class="full-width">
+                            <a href="Controlador?accion=consultarPago_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-search"></i>
                                 </div>
@@ -193,7 +203,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <input class="mdl-textfield__input"  type="number" id="cArrendador" name="cArrendador">
-                                    <label class="mdl-textfield__label" for="cArrendador">Cédula arrendador</label>
+                                    <label class="mdl-textfield__label" for="cArrendador">Cédula arrendatario</label>
                                     <span class="mdl-textfield__error">Dirección invalida</span>
                                 </div>
                             </div>

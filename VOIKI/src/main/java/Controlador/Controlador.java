@@ -220,6 +220,10 @@ public class Controlador extends HttpServlet {
             }
             acceso = arrendadorMain;
         }
+        else if(action.equalsIgnoreCase("consultarPago_P")){
+            request.setAttribute("ced",logIn.getCedula());
+            acceso = consultarPagos_P;
+        }
 
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
 

@@ -44,6 +44,33 @@ https://www.youtube.com/c/CarlosAlfaro007
     <script src="recursos/js/sweetalert2.min.js" ></script>
     <script src="recursos/js/jquery.mCustomScrollbar.concat.min.js" ></script>
     <script src="recursos/js/main.js" ></script>
+    <style>
+        table {
+            font-size: 10px; /* Reducir tamaño de la letra */
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 2px solid #ddd; /* Borde de la tabla */
+            width: 100%;
+        }
+
+        th, td {
+            padding: 5px; /* Reducir espaciado interior de las celdas */
+            text-align: center; /* Centrar contenido de las celdas */
+            border-bottom: 1px solid #ddd; /* Borde inferior de las filas */
+            max-width: 100px; /* Reducir ancho máximo de las celdas */
+            white-space: nowrap; /* Evitar que el texto se ajuste automáticamente */
+            overflow: hidden; /* Ocultar el contenido excedente */
+            text-overflow: ellipsis; /* Mostrar puntos suspensivos si el contenido excede el ancho */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Color de fondo de las celdas del encabezado */
+        }
+
+        tr:hover {
+            background-color: #f5f5f5; /* Cambiar color de fondo al pasar el cursor sobre la fila */
+        }
+    </style>
 </head>
 <body>
 <!-- Notifications area -->
@@ -68,7 +95,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarInmueble" class="full-width">
+                            <a href="Controlador?accion=consultarInmueble_P" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-tv-list"></i>
                                 </div>
@@ -92,7 +119,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarContrato" class="full-width">
+                            <a href="Controlador?accion=consultarContrato_P" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-local-library"></i>
                                 </div>
@@ -116,7 +143,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarPlanPago" class="full-width">
+                            <a href="Controlador?accion=consultarPago_P" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-search"></i>
                                 </div>

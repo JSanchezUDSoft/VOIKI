@@ -22,7 +22,7 @@ public class Controlador extends HttpServlet {
     String consultarInmueble_A = "Vistas/consultarInmueble.jsp";
     String consultarInmueble_P = "Vistas/consultarInmuebles.jsp";
     String consultarContrato = "Vistas/consultarContrato.jsp";
-    String consultarPagos = "Vistas/consultar_pagos.jsp";
+    String consultarPagosP = "Vistas/consultar_pagos_P.jsp";
 
     String actualizarInmueble = "Vistas/actualizar_inmueble.jsp";
 
@@ -173,6 +173,10 @@ public class Controlador extends HttpServlet {
                 contratoDAO.firmarContrato(Integer.parseInt(request.getParameter("idContrato")));
             }
             acceso = arrendatarioMain;
+        } else if (action.equalsIgnoreCase("consultarPlanPagos")) {
+            request.setAttribute("ced",logIn.getCedula());
+            acceso = consultarPagosP;
+
         }
 
         RequestDispatcher vista=request.getRequestDispatcher(acceso);

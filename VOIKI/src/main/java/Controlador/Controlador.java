@@ -172,7 +172,7 @@ public class Controlador extends HttpServlet {
             contratoDAO.crearContrato(contrato);
 
             acceso = crearContrato;
-        }else if (action.equalsIgnoreCase("crearContrato_P")) {
+        }/*else if (action.equalsIgnoreCase("crearContrato_P")) {
 
             String  fechaInicio = request.getParameter("finicio");
             String  FechaFinalizacion = request.getParameter("ffin");
@@ -193,7 +193,7 @@ public class Controlador extends HttpServlet {
             contratoDAO.crearContrato(contrato);
 
             acceso = crearContrato_P;
-        }
+        }*/
         else if(action.equalsIgnoreCase("consultarInmueble_P")){
             acceso = consultarInmueble_P;
         }
@@ -208,11 +208,12 @@ public class Controlador extends HttpServlet {
             request.setAttribute("ced",logIn.getCedula());
             acceso = consultarContrato_P;
 
-        } else if (action.equalsIgnoreCase("firmarContrato_P")) {
+        /*} else if (action.equalsIgnoreCase("firmarContrato_P")) {
             if (request.getParameter("idContrato") != null) {
                 contratoDAO.firmarContrato(Integer.parseInt(request.getParameter("idContrato")));
             }
             acceso = arrendatarioMain;
+         */
         } else if (action.equalsIgnoreCase("firmarContrato")) {
             if (request.getParameter("idContrato") != null) {
                 contratoDAO.firmarContrato(Integer.parseInt(request.getParameter("idContrato")));

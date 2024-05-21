@@ -19,8 +19,8 @@ public class Controlador extends HttpServlet {
     String arrendatarioMain = "Vistas/arrendatario_main.jsp";
     String arrendadorMain = "Vistas/arrendador_main.jsp";
 
-    String consultarInmueble_A = "Vistas/consultarInmueble.jsp";
-    String consultarInmueble_P = "Vistas/consultarInmuebles.jsp";
+    String consultarInmueble_A = "Vistas/consultarInmuebles.jsp";
+    String consultarInmueble_P = "Vistas/consultarInmueble.jsp";
     String consultarContrato = "Vistas/consultarContrato.jsp";
     String consultarPagos = "Vistas/consultar_pagos.jsp";
 
@@ -163,11 +163,15 @@ public class Controlador extends HttpServlet {
 
             acceso = crearContrato;
         }
-        else if(action.equalsIgnoreCase("consultarInmuebles")){
+        else if(action.equalsIgnoreCase("consultarInmueble")){
             acceso = consultarInmueble_P;
+        }
+        else if(action.equalsIgnoreCase("consultarInmuebles")){
+            acceso = consultarInmueble_A;
         } else if (action.equalsIgnoreCase("consultarContrato")) {
             request.setAttribute("ced",logIn.getCedula());
             acceso = consultarContrato;
+
         } else if (action.equalsIgnoreCase("firmarContrato")) {
             if (request.getParameter("idContrato") != null) {
                 contratoDAO.firmarContrato(Integer.parseInt(request.getParameter("idContrato")));

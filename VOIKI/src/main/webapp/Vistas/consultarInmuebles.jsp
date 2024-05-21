@@ -4,7 +4,8 @@
   Date: 19/05/2024
   Time: 3:00 p. m.
   To change this template use File | Settings | File Templates.
---%>
+--%><%@ page import="java.io.PrintWriter" %>
+
 <%@ page import="Config.Conexion" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
@@ -62,12 +63,22 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarInmueble" class="full-width">
+                            <a href="Controlador?accion=publicitarInmueble" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-tv-list"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Inmueble
+                                    Publicitar Inmueble
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarInmuebles" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-pages"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Consultar Inmuebles
                                 </div>
                             </a>
                         </li>

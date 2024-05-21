@@ -170,7 +170,14 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </div>
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  type="date"  id="finicio" name="finicio" disabled value=<%out.println('"'+contrato.getFechaInicio()+'"');%>>
+                                    <input class="mdl-textfield__input"  type="date"  id="finicio" name="finicio" disabled value=<%out.<input class="mdl-textfield__input"  type="date"  id="finicio" name="finicio" disabled value="<%= contrato.getFechaInicio() %>">
+<input class="mdl-textfield__input"  type="date" id="ffin" name="ffin" disabled value="<%= contrato.getFechaFinalizacion() %>">
+<input class="mdl-textfield__input"  type="number" id="cArrendador" name="cArrendador" disabled value="<%= contrato.getCedulaArrendador() %>">
+<input class="mdl-textfield__input"  type="text" id="inmueble" name="inmueble" disabled value="<%= direccion %>">
+<input class="mdl-textfield__input"  type="text" id="ciudad" name="ciudad" disabled value="<%= ciudad %>">
+<input class="mdl-textfield__input"  type="number" id="canon" name="canon" disabled value="<%= contrato.getCanonPactado() %>">
+<textarea class="mdl-textfield__input" id="terms" name="terms" disabled><%= contrato.getTerminosycondicionesContrato() %></textarea>
+<input type="number" id="idContrato" name="idContrato" style="visibility: hidden" value="<%= contrato.getIdContrato() %>">println('"'+contrato.getFechaInicio()+'"');%>>
                                     <label class="mdl-textfield__label" for="finicio">Fecha de Inicio</label>
                                     <span class="mdl-textfield__error">Cedula Invalida</span>
                                 </div>

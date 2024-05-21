@@ -3,6 +3,7 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Vistas/consultarInmuebles.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Vistas" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Vistas/publicitar_inmueble.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Vistas" />
       </map>
     </option>

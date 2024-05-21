@@ -17,7 +17,7 @@ public class Conexion {
     public Conexion(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/VOIKI?useTimezone=true&serverTimezone=UTC","root","ARTORIAS27");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/VOIKI?useTimezone=true&serverTimezone=UTC","juanserrano","santito3");
         } catch (Exception e) {
             System.err.println("Error"+e);
         }

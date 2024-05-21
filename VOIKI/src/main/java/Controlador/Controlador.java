@@ -15,6 +15,8 @@ public class Controlador extends HttpServlet {
     String registrarUsuario = "Vistas/registrar_usuario.jsp";
     String publicitarInmueble = "Vistas/publicitar_inmueble.jsp";
     String crearContrato = "Vistas/crear_contrato.jsp";
+    String crearContrato_P = "Vistas/crear_contrato_P.jsp";
+
 
     String arrendatarioMain = "Vistas/arrendatario_main.jsp";
     String arrendadorMain = "Vistas/arrendador_main.jsp";
@@ -147,7 +149,9 @@ public class Controlador extends HttpServlet {
 
         } else if (action.equalsIgnoreCase("registrarContrato")) {
             acceso = crearContrato;
-        } else if (action.equalsIgnoreCase("crearContrato")) {
+        } else if (action.equalsIgnoreCase("registrarContrato_P")) {
+            acceso = crearContrato_P;
+        }else if (action.equalsIgnoreCase("crearContrato")) {
 
             String  fechaInicio = request.getParameter("finicio");
             String  FechaFinalizacion = request.getParameter("ffin");
@@ -168,6 +172,27 @@ public class Controlador extends HttpServlet {
             contratoDAO.crearContrato(contrato);
 
             acceso = crearContrato;
+        }else if (action.equalsIgnoreCase("crearContrato_P")) {
+
+            String  fechaInicio = request.getParameter("finicio");
+            String  FechaFinalizacion = request.getParameter("ffin");
+            String  cedulaArrendatario = request.getParameter("cArrendador");
+            int     codigoInmueble = Integer.parseInt(request.getParameter("cInmueble"));
+            int     canonPactado = Integer.parseInt(request.getParameter("canon"));
+            int     periodoFacturacion = Integer.parseInt(request.getParameter("periodo"));
+            String  terminosycondicionesContrato = request.getParameter("terms");
+
+            contrato.setFechaInicio(fechaInicio);
+            contrato.setFechaFinalizacion(FechaFinalizacion);
+            contrato.setCedulaArrendatario(cedulaArrendatario);
+            contrato.setCodigoInmueble(codigoInmueble);
+            contrato.setCanonPactado(canonPactado);
+            contrato.setPeriodoFacturacion(periodoFacturacion);
+            contrato.setTerminosycondicionesContrato(terminosycondicionesContrato);
+
+            contratoDAO.crearContrato(contrato);
+
+            acceso = crearContrato_P;
         }
         else if(action.equalsIgnoreCase("consultarInmueble_P")){
             acceso = consultarInmueble_P;

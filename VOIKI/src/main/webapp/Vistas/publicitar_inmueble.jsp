@@ -57,7 +57,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=registrarInmueble" class="full-width">
+                            <a href="Controlador?accion=publicitarInmueble" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-tv-list"></i>
                                 </div>
@@ -67,7 +67,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </a>
                         </li>
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarInmueble" class="full-width">
+                            <a href="Controlador?accion=consultarInmueble_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-pages"></i>
                                 </div>
@@ -100,6 +100,16 @@ https://www.youtube.com/c/CarlosAlfaro007
                                 </div>
                             </a>
                         </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarInmueble_A" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-pages"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Consultar Inmuebles
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="full-width divider-menu-h"></li>
@@ -125,7 +135,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </a>
                         </li>
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarPago" class="full-width">
+                            <a href="Controlador?accion=consultarPago_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-search"></i>
                                 </div>

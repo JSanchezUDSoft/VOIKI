@@ -4,7 +4,8 @@
   Date: 19/05/2024
   Time: 3:00 p. m.
   To change this template use File | Settings | File Templates.
---%>
+--%><%@ page import="java.io.PrintWriter" %>
+
 <%@ page import="Config.Conexion" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
@@ -38,6 +39,35 @@ https://www.youtube.com/c/CarlosAlfaro007
     <script src="recursos/js/sweetalert2.min.js" ></script>
     <script src="recursos/js/jquery.mCustomScrollbar.concat.min.js" ></script>
     <script src="recursos/js/main.js" ></script>
+    <style>
+        /* Estilos para centrar y agregar espaciado a la tabla */
+        .table-container {
+            max-width: 100%; /* Ancho máximo del contenedor */
+            overflow-x: auto; /* Añadir barra de desplazamiento horizontal si la tabla es más ancha */
+            margin: 0 auto; /* Centrar el contenedor */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 2px solid #ddd; /* Borde de la tabla */
+        }
+
+        th, td {
+            padding: 12px; /* Espaciado interior de las celdas */
+            text-align: center; /* Centrar contenido de las celdas */
+            border-bottom: 1px solid #ddd; /* Borde inferior de las filas */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Color de fondo de las celdas del encabezado */
+        }
+
+        tr:hover {
+            background-color: #f5f5f5; /* Cambiar color de fondo al pasar el cursor sobre la fila */
+        }
+    </style>
 </head>
 <body>
 <!-- Notifications area -->
@@ -62,12 +92,22 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarInmueble" class="full-width">
+                            <a href="Controlador?accion=publicitarInmueble" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-tv-list"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Inmueble
+                                    Publicitar Inmueble
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarInmueble_A" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-pages"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Consultar Inmuebles
                                 </div>
                             </a>
                         </li>
@@ -86,7 +126,17 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarContrato" class="full-width">
+                            <a href="Controlador?accion=registrarContrato" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-local-library"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Crear Contrato
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarContrato_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-local-library"></i>
                                 </div>
@@ -110,12 +160,22 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarPlanPagos" class="full-width">
+                            <a href="Controlador?accion=registrarPago" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-tv-list"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Registrar Pago
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarPago_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-search"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Plan de Pagos
+                                    Consultar Pago
                                 </div>
                             </a>
                         </li>

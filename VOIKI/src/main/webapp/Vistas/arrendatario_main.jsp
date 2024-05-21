@@ -57,12 +57,12 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarInmuebles" class="full-width">
+                            <a href="Controlador?accion=consultarInmueble_P" class="full-width">
                                 <div class="navLateral-body-cl">
-                                    <i class="zmdi zmdi-tv-list"></i>
+                                    <i class="zmdi zmdi-pages"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Inmueble
+                                    Consultar Inmuebles
                                 </div>
                             </a>
                         </li>
@@ -80,8 +80,18 @@ https://www.youtube.com/c/CarlosAlfaro007
                         <span class="zmdi zmdi-chevron-left"></span>
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
+                        <%--<li class="full-width">
+                            <a href="Controlador?accion=registrarContrato_P" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-local-library"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Crear Contrato
+                                </div>
+                            </a>
+                        </li>--%>
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarContrato" class="full-width">
+                            <a href="Controlador?accion=consultarContrato_P" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-local-library"></i>
                                 </div>
@@ -105,12 +115,12 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarPlanPagos" class="full-width">
+                            <a href="Controlador?accion=consultarPago_P" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-search"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Plan de Pagos
+                                    Consultar Pago
                                 </div>
                             </a>
                         </li>

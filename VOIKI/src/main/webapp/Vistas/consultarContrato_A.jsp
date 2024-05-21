@@ -163,126 +163,62 @@ https://www.youtube.com/c/CarlosAlfaro007
 <section class="full-width pageContent">
     <!-- navBar -->
     <div class="full-width navBar">
-        <div class="full-width navBar-options">
-            <i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>
-            <div class="mdl-tooltip" for="btn-menu">Hide / Show MENU</div>
-            <nav class="navBar-options-list">
-                <ul class="list-unstyle">
-                    <li class="btn-exit" id="btn-exit">
-                        <i class="zmdi zmdi-power"></i>
-                        <div class="mdl-tooltip" for="btn-exit">LogOut</div>
-                    </li>
-                    <li class="text-condensedLight noLink" ><small>User Name</small></li>
-                    <li class="noLink">
-                        <figure>
-                            <img src="recursos/css/img/avatar-male.png" alt="Avatar" class="img-responsive">
-                        </figure>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        <!-- Your navBar code here -->
     </div>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col">
             <div class="full-width panel mdl-shadow--2dp">
                 <div class="full-width panel-tittle bg-primary text-center tittles">
-                    Contrato Pendiente
+                    Contratos
                 </div>
                 <div class="full-width panel-content">
-                    <%
-                        ContratoDAO dao = new ContratoDAO();
-                        Contrato contrato = dao.consultarContrato((String)request.getAttribute("ced"));
-                    %>
-                    <form action="Controlador">
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--12-col">
-                                <legend class="text-condensedLight"><i class="zmdi zmdi-border-color"></i>DATOS DEL CONTRATO</legend><br>
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  type="date"  id="finicio" name="finicio" disabled value=<%out.println('"'+contrato.getFechaInicio()+'"');%>>
-                                    <label class="mdl-textfield__label" for="finicio">Fecha de Inicio</label>
-                                    <span class="mdl-textfield__error">Cedula Invalida</span>
-                                </div>
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  type="date" id="ffin" name="ffin" disabled value=<%out.println('"'+contrato.getFechaFinalizacion()+'"');%>>
-                                    <label class="mdl-textfield__label" for="ffin">Fecha de Finalizacion</label>
-                                    <span class="mdl-textfield__error">Matricula Invalida</span>
-                                </div>
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  type="number" id="cArrendador" name="cArrendador" disabled value=<%out.println('"'+contrato.getCedulaArrendador()+'"');%>>
-                                    <label class="mdl-textfield__label" for="cArrendador">Cédula arrendatario</label>
-                                    <span class="mdl-textfield__error">Dirección invalida</span>
-                                </div>
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <%
-                                        Conexion cn = new Conexion();
-                                        Connection con;
-                                        PreparedStatement ps;
-                                        ResultSet rs;
-                                        String direccion="";
-                                        String ciudad="";
-                                        String sql = "select k_propiedad, d_propiedad, n_ciudad from propiedades where k_propiedad =?";
-                                        try {
-                                            con = cn.getConnection();
-                                            ps = con.prepareStatement(sql);
-                                            String codigo = contrato.getCodigoInmueble()+"";
-                                            ps.setString(1,codigo);
-                                            rs = ps.executeQuery();
-
-                                            while (rs.next()) {
-                                                direccion = rs.getString(2);
-                                                ciudad = rs.getString(3);
-                                            }
-                                        }catch (Exception e){
-                                            System.out.println(e);
-                                        }
-                                    %>
-                                    <input class="mdl-textfield__input"  type="text" id="inmueble" name="inmueble" disabled value=<%out.println('"'+direccion+'"');%>>
-                                    <label class="mdl-textfield__label" for="inmueble">Inmueble A arrendar</label>
-                                </div>
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  type="text" id="ciudad" name="ciudad" disabled value=<%out.println('"'+ciudad+'"');%>>
-                                    <label class="mdl-textfield__label" for="inmueble">Ciudad del inmueble</label>
-                                </div>
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input"  type="number" id="canon" name="canon" disabled value=<%String canon = contrato.getCanonPactado()+""; out.println('"'+canon+'"');%>>
-                                    <label class="mdl-textfield__label" for="canon">Canon de arrendamiento pactado</label>
-                                    <span class="mdl-textfield__error">Canon invalido</span>
-                                </div>
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <textarea class="mdl-textfield__input" id="terms" name="terms" disabled><%out.println(contrato.getTerminosycondicionesContrato());%></textarea>
-                                    <label class="mdl-textfield__label" for="terms">Terminos y condiciones contrato</label>
-                                    <span class="mdl-textfield__error">Barrio invalido</span>
-                                </div>
-                            </div>
-                            <input  type="number" id="idContrato" name="idContrato" style="visibility: hidden" value=<%String id = contrato.getIdContrato()+""; out.println('"'+id+'"');%>>
-                        </div>
-                        <p class="text-center">
-                            <button type="submit" name="accion" value="firmarContrato" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addFuncion">
-                                <i class="zmdi zmdi-check"></i>
-                            </button>
-                        <div class="mdl-tooltip" for="btn-addCompany">Firmar Contrato</div>
-                        </p>
-                    </form>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th scope="col">ID Contrato</th>
+                            <th scope="col">Fecha de Creación</th>
+                            <th scope="col">Fecha de Firma</th>
+                            <th scope="col">Fecha de Inicio</th>
+                            <th scope="col">Fecha de Finalización</th>
+                            <th scope="col">Cédula Arrendador</th>
+                            <th scope="col">Cédula Arrendatario</th>
+                            <th scope="col">Código Inmueble</th>
+                            <th scope="col">Canon Pactado</th>
+                            <th scope="col">Periodo de Facturación</th>
+                            <th scope="col">Términos y Condiciones</th>
+                            <th scope="col">Firma Arrendador</th>
+                            <th scope="col">Firma Arrendatario</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <%
+                            ContratoDAO contratoDAO = new ContratoDAO();
+                            List<Contrato> contratos = contratoDAO.consultarContratosPactados((String)request.getAttribute("ced"));
+                            for (Contrato contrato : contratos) {
+                        %>
+                        <tr>
+                            <td><%= contrato.getIdContrato() %></td>
+                            <td><%= contrato.getFechaCreacion() %></td>
+                            <td><%= contrato.getFechaFirma() %></td>
+                            <td><%= contrato.getFechaInicio() %></td>
+                            <td><%= contrato.getFechaFinalizacion() %></td>
+                            <td><%= contrato.getCedulaArrendador() %></td>
+                            <td><%= contrato.getCedulaArrendatario() %></td>
+                            <td><%= contrato.getCodigoInmueble() %></td>
+                            <td><%= contrato.getCanonPactado() %></td>
+                            <td><%= contrato.getPeriodoFacturacion() %></td>
+                            <td><%= contrato.getTerminosycondicionesContrato() %></td>
+                            <td><%= contrato.getFirmaArrendador() %></td>
+                            <td><%= contrato.getFirmaArrendatario() %></td>
+                        </tr>
+                        <% } %>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
     <div class="full-width divider-menu-h"></div>
-
 </section>
 </body>
 </html>

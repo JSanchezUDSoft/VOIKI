@@ -58,6 +58,39 @@ public class ContratoDAO implements IContrato {
         }
         return contrato;
     }
+
+    public List<Contrato> consultarContratosPactados(String cedulaArrendador) {
+        List<Contrato> contratos = new ArrayList<>();
+        String sql = "SELECT * FROM contratos WHERE k_arrendador = ? AND i_firmaarrendatario = 'F'";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, cedulaArrendador);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Contrato contrato = new Contrato();
+                contrato.setIdContrato(rs.getInt("k_contrato"));
+                contrato.setFechaCreacion(rs.getString("f_creacion"));
+                contrato.setFechaFirma(rs.getString("f_firma"));
+                contrato.setFechaInicio(rs.getString("f_inicio"));
+                contrato.setFechaFinalizacion(rs.getString("f_finalizacion"));
+                contrato.setCedulaArrendador(rs.getString("k_arrendador"));
+                contrato.setCedulaArrendatario(rs.getString("k_arrendatario"));
+                contrato.setCodigoInmueble(rs.getInt("k_propiedad"));
+                contrato.setCanonPactado(rs.getInt("v_canonpactado"));
+                contrato.setPeriodoFacturacion(rs.getInt("v_periodofacturacion"));
+                contrato.setTerminosycondicionesContrato(rs.getString("o_terminosycondiciones"));
+                contrato.setFirmaArrendador(rs.getString("i_firmaarrendador"));
+                contrato.setFirmaArrendatario(rs.getString("i_firmaarrendatario"));
+                contratos.add(contrato);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e);
+        }
+        return contratos;
+    }
+
+
     public String[] consultarPeriodoFacturacion(int idContrato){
         String[] datos = new String[6];
 

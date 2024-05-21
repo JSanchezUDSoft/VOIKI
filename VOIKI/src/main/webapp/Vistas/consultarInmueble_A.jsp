@@ -73,7 +73,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </a>
                         </li>
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarInmuebles" class="full-width">
+                            <a href="Controlador?accion=consultarInmueble_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-pages"></i>
                                 </div>
@@ -107,7 +107,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </a>
                         </li>
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarContrato" class="full-width">
+                            <a href="Controlador?accion=consultarContrato_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-local-library"></i>
                                 </div>
@@ -131,12 +131,22 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarPlanPago" class="full-width">
+                            <a href="Controlador?accion=registrarPago" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-tv-list"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    Registrar Pago
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="Controlador?accion=consultarPago_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-search"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Plan de Pagos
+                                    Consultar Pago
                                 </div>
                             </a>
                         </li>

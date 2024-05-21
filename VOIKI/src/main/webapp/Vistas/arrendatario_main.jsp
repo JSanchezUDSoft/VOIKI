@@ -57,7 +57,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarInmueble" class="full-width">
+                            <a href="Controlador?accion=consultarInmueble_P" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-tv-list"></i>
                                 </div>
@@ -81,7 +81,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                     </a>
                     <ul class="full-width menu-principal sub-menu-options">
                         <li class="full-width">
-                            <a href="Controlador?accion=consultar_Contrato" class="full-width">
+                            <a href="Controlador?accion=consultarContrato_P" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-local-library"></i>
                                 </div>
@@ -102,18 +102,18 @@ https://www.youtube.com/c/CarlosAlfaro007
                         </div>
                         <span class="zmdi zmdi-chevron-left"></span>
                     </a>
-                    <ul class="full-width menu-principal sub-menu-options">
-                        <li class="full-width">
-                            <a href="Controlador?accion=consultarPago" class="full-width">
-                                <div class="navLateral-body-cl">
-                                    <i class="zmdi zmdi-search"></i>
-                                </div>
-                                <div class="navLateral-body-cr">
-                                    Consultar Plan de Pagos
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+            </ul>
+            <ul class="full-width menu-principal sub-menu-options">
+                <li class="full-width">
+                    <a href="Controlador?accion=consultarPago_P" class="full-width">
+                        <div class="navLateral-body-cl">
+                            <i class="zmdi zmdi-search"></i>
+                        </div>
+                        <div class="navLateral-body-cr">
+                            Consultar Plan de Pagos
+                        </div>
+                    </a>
                 </li>
             </ul>
         </nav>

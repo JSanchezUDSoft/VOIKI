@@ -67,7 +67,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </a>
                         </li>
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarInmueble" class="full-width">
+                            <a href="Controlador?accion=consultarInmueble_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-pages"></i>
                                 </div>
@@ -101,7 +101,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </a>
                         </li>
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarContrato" class="full-width">
+                            <a href="Controlador?accion=consultarContrato_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-local-library"></i>
                                 </div>
@@ -135,7 +135,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             </a>
                         </li>
                         <li class="full-width">
-                            <a href="Controlador?accion=consultarPago" class="full-width">
+                            <a href="Controlador?accion=consultarPago_A" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-search"></i>
                                 </div>

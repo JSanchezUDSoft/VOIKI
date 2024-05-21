@@ -19,12 +19,16 @@ public class Controlador extends HttpServlet {
     String arrendatarioMain = "Vistas/arrendatario_main.jsp";
     String arrendadorMain = "Vistas/arrendador_main.jsp";
 
-    String consultarInmueble_A = "Vistas/consultarInmuebles.jsp";
-    String consultarInmueble_P = "Vistas/consultarInmueble.jsp";
-    String consultarContrato = "Vistas/consultarContrato.jsp";
-    String consultar_Contrato = "Vistas/consultar_contrato.jsp";
-    String consultarPago = "Vistas/consultarPago.jsp";
-    String consultarPagos = "Vistas/consultarPagos.jsp";
+    String consultarInmueble_A = "Vistas/consultarInmueble_A.jsp";
+    String consultarInmueble_P = "Vistas/consultarInmueble_P.jsp";
+
+    String consultarContrato_A = "Vistas/consultarContrato_A.jsp";
+    String consultarContrato_P = "Vistas/consultarContrato_P.jsp";
+
+    String registrarPago = "Vistas/consultarPago_A.jsp";
+
+    String consultarPagos_A = "Vistas/consultarPago_A.jsp";
+    String consultarPagos_P = "Vistas/consultarPago_P.jsp";
 
     String actualizarInmueble = "Vistas/actualizar_inmueble.jsp";
 
@@ -165,17 +169,17 @@ public class Controlador extends HttpServlet {
 
             acceso = crearContrato;
         }
-        else if(action.equalsIgnoreCase("consultarInmueble")){
+        else if(action.equalsIgnoreCase("consultarInmueble_P")){
             acceso = consultarInmueble_P;
         }
-        else if(action.equalsIgnoreCase("consultarInmuebles")){
+        else if(action.equalsIgnoreCase("consultarInmueble_A")){
             acceso = consultarInmueble_A;
-        } else if (action.equalsIgnoreCase("consultarContrato")) {
+        } else if (action.equalsIgnoreCase("consultarContrato_A")) {
             request.setAttribute("ced",logIn.getCedula());
-            acceso = consultarContrato;
-        } else if (action.equalsIgnoreCase("consultar_Contrato")) {
+            acceso = consultarContrato_A;
+        } else if (action.equalsIgnoreCase("consultarContrato_P")) {
             request.setAttribute("ced",logIn.getCedula());
-            acceso = consultar_Contrato;
+            acceso = consultarContrato_P;
         } else if (action.equalsIgnoreCase("firmarContrato")) {
             if (request.getParameter("idContrato") != null) {
                 contratoDAO.firmarContrato(Integer.parseInt(request.getParameter("idContrato")));

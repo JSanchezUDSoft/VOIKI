@@ -61,7 +61,7 @@ public class ContratoDAO implements IContrato {
 
     public List<Contrato> consultarContratosPactados(String cedulaArrendador) {
         List<Contrato> contratos = new ArrayList<>();
-        String sql = "SELECT * FROM contratos WHERE k_arrendador = ? AND i_firmaarrendatario = 'F'";
+        String sql = "SELECT * FROM contratos WHERE k_arrendador = ? AND i_firmaarrendatario = 'F' OR i_firmaarrendatario = 'P'";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);

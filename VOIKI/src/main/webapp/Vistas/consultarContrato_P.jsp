@@ -195,7 +195,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <input class="mdl-textfield__input"  type="number" id="cArrendador" name="cArrendador" disabled value=<%out.println('"'+contrato.getCedulaArrendador()+'"');%>>
-                                    <label class="mdl-textfield__label" for="cArrendador">Cédula arrendatario</label>
+                                    <label class="mdl-textfield__label" for="cArrendador">Cédula Arrendador</label>
                                     <span class="mdl-textfield__error">Dirección invalida</span>
                                 </div>
                             </div>
@@ -251,7 +251,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                             <input  type="number" id="idContrato" name="idContrato" style="visibility: hidden" value=<%String id = contrato.getIdContrato()+""; out.println('"'+id+'"');%>>
                         </div>
                         <p class="text-center">
-                            <button type="submit" name="accion" value="firmarContrato" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addFuncion">
+                            <button type="submit" name="accion" value="firmarContrato_P" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addFuncion">
                                 <i class="zmdi zmdi-check"></i>
                             </button>
                         <div class="mdl-tooltip" for="btn-addCompany">Firmar Contrato</div>

@@ -52,81 +52,82 @@ https://www.youtube.com/c/CarlosAlfaro007
         <div class="full-width navLateral-body-logo text-center tittles">
             <i class="zmdi zmdi-close btn-menu"></i> VOIKI
         </div>
-        <nav class="full-width">
-            <ul class="full-width list-unstyle menu-principal">
-                <li class="full-width">
-                    <a href="#!" class="full-width btn-subMenu">
-                        <div class="navLateral-body-cl">
-                            <i class="zmdi zmdi-local-hotel"></i>
-                        </div>
-                        <div class="navLateral-body-cr">
-                            Inmuebles
-                        </div>
-                        <span class="zmdi zmdi-chevron-left"></span>
-                    </a>
-                    <ul class="full-width menu-principal sub-menu-options">
-                        <li class="full-width">
-                            <a href="Controlador?accion=consultarInmueble_P" class="full-width">
-                                <div class="navLateral-body-cl">
-                                    <i class="zmdi zmdi-tv-list"></i>
-                                </div>
-                                <div class="navLateral-body-cr">
-                                    Consultar Inmueble
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="full-width divider-menu-h"></li>
-                <li class="full-width">
-                    <a href="#!" class="full-width btn-subMenu">
-                        <div class="navLateral-body-cl">
-                            <i class="zmdi zmdi-accounts"></i>
-                        </div>
-                        <div class="navLateral-body-cr">
-                            Contratos
-                        </div>
-                        <span class="zmdi zmdi-chevron-left"></span>
-                    </a>
-                    <ul class="full-width menu-principal sub-menu-options">
-                        <li class="full-width">
-                            <a href="Controlador?accion=consultarContrato_P" class="full-width">
-                                <div class="navLateral-body-cl">
-                                    <i class="zmdi zmdi-local-library"></i>
-                                </div>
-                                <div class="navLateral-body-cr">
-                                    Consultar Contrato
-                                </div>
-                            </a>
-                        </li>
-                </li>
-                <li class="full-width divider-menu-h"></li>
-                <li class="full-width">
-                    <a href="#!" class="full-width btn-subMenu">
-                        <div class="navLateral-body-cl">
-                            <i class="zmdi zmdi-money"></i>
-                        </div>
-                        <div class="navLateral-body-cr">
-                            Pagos
-                        </div>
-                        <span class="zmdi zmdi-chevron-left"></span>
-                    </a>
-                    <ul class="full-width menu-principal sub-menu-options">
-                        <li class="full-width">
-                            <a href="Controlador?accion=consultarPago_P" class="full-width">
-                                <div class="navLateral-body-cl">
-                                    <i class="zmdi zmdi-search"></i>
-                                </div>
-                                <div class="navLateral-body-cr">
-                                    Consultar Plan de Pagos
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </div>
+            <nav class="full-width">
+                <ul class="full-width list-unstyle menu-principal">
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl">
+                                <i class="zmdi zmdi-local-hotel"></i>
+                            </div>
+                            <div class="navLateral-body-cr">
+                                Inmuebles
+                            </div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="Controlador?accion=consultarInmueble_P" class="full-width">
+                                    <div class="navLateral-body-cl">
+                                        <i class="zmdi zmdi-pages"></i>
+                                    </div>
+                                    <div class="navLateral-body-cr">
+                                        Consultar Inmuebles
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl">
+                                <i class="zmdi zmdi-accounts"></i>
+                            </div>
+                            <div class="navLateral-body-cr">
+                                Contratos
+                            </div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="Controlador?accion=consultarContrato_P" class="full-width">
+                                    <div class="navLateral-body-cl">
+                                        <i class="zmdi zmdi-local-library"></i>
+                                    </div>
+                                    <div class="navLateral-body-cr">
+                                        Consultar Contrato
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="full-width divider-menu-h"></li>
+                    <li class="full-width">
+                        <a href="#!" class="full-width btn-subMenu">
+                            <div class="navLateral-body-cl">
+                                <i class="zmdi zmdi-money"></i>
+                            </div>
+                            <div class="navLateral-body-cr">
+                                Pagos
+                            </div>
+                            <span class="zmdi zmdi-chevron-left"></span>
+                        </a>
+                        <ul class="full-width menu-principal sub-menu-options">
+                            <li class="full-width">
+                                <a href="Controlador?accion=consultarPago_P" class="full-width">
+                                    <div class="navLateral-body-cl">
+                                        <i class="zmdi zmdi-search"></i>
+                                    </div>
+                                    <div class="navLateral-body-cr">
+                                        Consultar Pago
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+     </div>
 </section>
 <!-- pageContent -->
 <section class="full-width pageContent">

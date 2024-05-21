@@ -174,12 +174,15 @@ public class Controlador extends HttpServlet {
         }
         else if(action.equalsIgnoreCase("consultarInmueble_A")){
             acceso = consultarInmueble_A;
+
         } else if (action.equalsIgnoreCase("consultarContrato_A")) {
             request.setAttribute("ced",logIn.getCedula());
             acceso = consultarContrato_A;
+
         } else if (action.equalsIgnoreCase("consultarContrato_P")) {
             request.setAttribute("ced",logIn.getCedula());
             acceso = consultarContrato_P;
+
         } else if (action.equalsIgnoreCase("firmarContrato")) {
             if (request.getParameter("idContrato") != null) {
                 contratoDAO.firmarContrato(Integer.parseInt(request.getParameter("idContrato")));

@@ -65,10 +65,10 @@ https://www.youtube.com/c/CarlosAlfaro007
                         <li class="full-width">
                             <a href="Controlador?accion=consultarInmueble_P" class="full-width">
                                 <div class="navLateral-body-cl">
-                                    <i class="zmdi zmdi-tv-list"></i>
+                                    <i class="zmdi zmdi-pages"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Inmueble
+                                    Consultar Inmuebles
                                 </div>
                             </a>
                         </li>
@@ -96,6 +96,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                                 </div>
                             </a>
                         </li>
+                    </ul>
                 </li>
                 <li class="full-width divider-menu-h"></li>
                 <li class="full-width">
@@ -115,7 +116,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                                     <i class="zmdi zmdi-search"></i>
                                 </div>
                                 <div class="navLateral-body-cr">
-                                    Consultar Plan de Pagos
+                                    Consultar Pago
                                 </div>
                             </a>
                         </li>

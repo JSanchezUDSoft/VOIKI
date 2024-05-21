@@ -30,7 +30,7 @@ public class Controlador extends HttpServlet {
     String registrarPago = "Vistas/consultarPago_A.jsp";
 
     String consultarPagos_A = "Vistas/consultarPago_A.jsp";
-    String consultarPagos_P = "Vistas/consultarPago_P.jsp";
+    String consultarPago_P = "Vistas/consultarPago_P.jsp";
 
     String actualizarInmueble = "Vistas/actualizar_inmueble.jsp";
 
@@ -78,24 +78,6 @@ public class Controlador extends HttpServlet {
             else{
                 acceso = login;
             }
-        }
-        else if (action.equalsIgnoreCase("Registrar")) {
-            acceso = registrarUsuario;
-        }
-        else if (action.equalsIgnoreCase("RegistrarU")) {
-            String cedula = (String )request.getParameter("identificacion");
-            String telefono = (String) request.getParameter("telefono");
-            String email = request.getParameter("email");
-            String contrasena = (String) request.getParameter("pass");
-            char rol = request.getParameter("rol").toCharArray()[0];
-            String nombre = request.getParameter("nombreUsuario");
-
-            Usuario newUser = new Usuario(cedula,nombre,telefono,email,rol,contrasena);
-            System.out.println(newUser);
-            usuarioDAO.registrarUsuario(newUser);
-
-            acceso = login;
-
         } else if (action.equalsIgnoreCase("publicitarInmueble")) {
             acceso = publicitarInmueble;
         } else if (action.equalsIgnoreCase("registrarInmueble")) {
@@ -222,7 +204,8 @@ public class Controlador extends HttpServlet {
         }
         else if(action.equalsIgnoreCase("consultarPago_P")){
             request.setAttribute("ced",logIn.getCedula());
-            acceso = consultarPagos_P;
+            acceso = consultarPago_P;
+
         }
 
         RequestDispatcher vista=request.getRequestDispatcher(acceso);

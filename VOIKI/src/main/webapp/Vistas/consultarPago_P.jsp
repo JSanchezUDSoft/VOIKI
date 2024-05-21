@@ -167,7 +167,18 @@ https://www.youtube.com/c/CarlosAlfaro007
             <div class="mdl-tooltip" for="btn-menu">Hide / Show MENU</div>
             <nav class="navBar-options-list">
                 <ul class="list-unstyle">
-                    <li class="btn-exit" id="btn-exit">
+                        <li class="full-width">
+                        <a href="Controlador?accion=logIn" class="full-width">
+                            <div class="navLateral-body-cl">
+                                <i class="zmdi zmdi-tv-list"></i>
+                            </div>
+                            <div class="navLateral-body-cr">
+                                Salir
+                            </div>
+                        </a>
+                        </li>
+
+                        <%/*<li class="btn-exit" id="btn-exit">
                         <i class="zmdi zmdi-power"></i>
                         <div class="mdl-tooltip" for="btn-exit">LogOut</div>
                     </li>
@@ -176,7 +187,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                         <figure>
                             <img src="recursos/css/img/avatar-male.png" alt="Avatar" class="img-responsive">
                         </figure>
-                    </li>
+                    </li>*/%>
                 </ul>
             </nav>
         </div>
@@ -201,7 +212,10 @@ https://www.youtube.com/c/CarlosAlfaro007
                         <%
                             PagoDAO dao = new PagoDAO();
                             List<Pago> pagosList= new ArrayList<>();
-                            pagosList = dao.consultarPagos('C',request.getParameter("ced"));
+                            System.out.println(request.getAttribute("ced"));
+
+                            pagosList = dao.consultarPagos('C',(String)request.getAttribute("ced"));
+
                             try {
                                 for(Pago pago:pagosList){
                                     out.println("<tr>");

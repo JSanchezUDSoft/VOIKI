@@ -47,11 +47,10 @@ public class PagoDAO implements IPago {
 
     public List<Pago> consultarPagos(char tipoConsulta, String valorConsulta) {
         List<Pago> pagos = new ArrayList<>();
-        String sql = "";
+        String sql ="";
 
         try {
             con = cn.getConnection();
-            PreparedStatement ps;
 
             if (tipoConsulta == 'A') { // Consulta por cédula del arrendador
                 sql = "SELECT * FROM pagos WHERE k_contrato IN (SELECT k_contrato FROM contratos WHERE k_arrendador = ?)";

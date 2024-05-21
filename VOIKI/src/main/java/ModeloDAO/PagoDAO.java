@@ -51,11 +51,15 @@ public class PagoDAO implements IPago {
             con = cn.getConnection();
             PreparedStatement ps;
 
-            if (tipoConsulta == 'C') { // Consulta por cédula del arrendador
+            if (tipoConsulta == 'A') { // Consulta por cédula del arrendador
                 sql = "SELECT * FROM pagos WHERE k_contrato IN (SELECT k_contrato FROM contratos WHERE k_arrendador = ?)";
                 ps = con.prepareStatement(sql);
                 ps.setString(1, valorConsulta);
-            } else if (tipoConsulta == 'P') { // Consulta por propiedad
+            } else if(tipoConsulta == 'C'){//Consulta por cedula del arrendatario
+                sql = "SELECT * FROM pagos WHERE k_contrato IN (SELECT k_contrato FROM contratos WHERE k_arrendatario = ?)";
+                ps = con.prepareStatement(sql);
+                ps.setString(1, valorConsulta);
+            }else if (tipoConsulta == 'P') { // Consulta por propiedad
                 sql = "SELECT * FROM pagos WHERE k_contrato IN (SELECT k_contrato FROM contratos WHERE k_propiedad = ?)";
                 ps = con.prepareStatement(sql);
                 ps.setString(1, valorConsulta);

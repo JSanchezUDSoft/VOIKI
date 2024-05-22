@@ -201,7 +201,7 @@ https://www.youtube.com/c/CarlosAlfaro007
                         <%
                             PagoDAO dao = new PagoDAO();
                             List<Pago> pagosList= new ArrayList<>();
-                            pagosList = dao.consultarPagos('C',request.getParameter("ced"));
+                            pagosList = dao.consultarPagos('C', Conexion.getIdentificacion());
                             try {
                                 for(Pago pago:pagosList){
                                     out.println("<tr>");
